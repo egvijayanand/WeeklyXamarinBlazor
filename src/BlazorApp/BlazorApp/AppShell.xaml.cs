@@ -12,7 +12,6 @@ namespace BlazorApp
             InitializeComponent();
             Routing.RegisterRoute(Constants.Navigation.Paths.Article, typeof(WebPage));
             Routing.RegisterRoute(Constants.Navigation.Paths.Web, typeof(WebPage));
-            Routing.RegisterRoute("test", typeof(TestPage2));
         }
     }
 }
