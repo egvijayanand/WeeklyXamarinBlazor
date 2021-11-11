@@ -1,0 +1,61 @@
+﻿@page "/about"
+@inject AppState appState
+@inject IJSRuntime jsRuntime
+@inject ILocalStorageService localStorage
+@inject INavigationService navigationService
+
+<div class="h20"></div>
+<div class="full-height">
+    <div class="row">
+        <p class="fw-bolder">
+            Developer Contact
+        </p>
+        @foreach (var link in externalLinks)
+        {
+            <p class="link" @onclick="() => navigationService.GoToAsync(Constants.Navigation.Paths.Web, Constants.Navigation.ParameterNames.WebLink, link.Url)">@link.Description</p>
+        }
+
+        <p class="fw-bolder">
+            Acknowledgements
+        </p>
+        <p>
+            To the entire Xamarin and .NET MAUI community for publishing a variety of articles ranging from getting started to detailed insights.
+        </p>
+        <p>
+            And to Kym Phillpotts and team, for their tireless efforts in collating the latest week after week to keep the community up-to-date.
+        </p>
+    </div>
+    @*<div class="row">
+        <input type="text" @bind="key" @onkeydown="OnKeyDown" @bind:event="oninput" />
+    </div>*@
+</div>
+
+@code {
+    private List<ExternalLinks> externalLinks = new();
+
+    private string key;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        appState.SetBackButtonState(false);
+        appState.SetPageTitle(Constants.Navigation.Paths.About);
+
+        externalLinks.Add(new ExternalLinks() { Description = "Vijay Anand E G", Url = "https://twitter.com/egvijayanand" });
+        externalLinks.Add(new ExternalLinks() { Description = "GitHub Repository", Url = "https://github.com/egvijayanand/WeeklyXamarinBlazor" });
+    }
+
+    private async void OnKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Code == Constants.Keys.Enter || e.Key == Constants.Keys.Enter)
+        {
+            if (await localStorage.ContainKeyAsync(key)
+                && await jsRuntime.InvokeAsync<bool>("confirm", "Are you sure?"))
+            {
+                await localStorage.RemoveItemAsync(key);
+                await jsRuntime.InvokeVoidAsync("alert", "Item with key '" + key + "' has been removed.");
+                key = string.Empty;
+            }
+        }
+    }
+}

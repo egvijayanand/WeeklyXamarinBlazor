@@ -1,0 +1,28 @@
+﻿@page "/article/{articleId}"
+@layout FullLayout
+@inject AppState appState
+@inject IDataStore dataStore
+
+@if (article != null)
+{
+    <iframe class="responsive-iframe" src="@article.Url"></iframe>
+}
+
+@code {
+    private Article article;
+
+    [Parameter]
+    public string ArticleId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        appState.SetBackButtonState(true);
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        article = await dataStore.GetArticleAsync(Article.GetEditionId(ArticleId), ArticleId);
+    }
+}

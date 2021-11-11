@@ -1,0 +1,83 @@
+﻿@page "/"
+@namespace BlazorApp.Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using WeeklyXamarin.Core
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Weekly Xamarin - Blazor</title>
+    <base href="~/" />
+    <link href="~/styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/styles/blazor.css" rel="stylesheet" />
+    <link href="BlazorApp.Server.styles.css" rel="stylesheet" />
+    <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
+    <link href="~/styles/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="~/favicon.png" rel="icon" sizes="16x16 32x32" />
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <component type="typeof(Main)" render-mode="Server" />
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- Modal dialog -->
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalButton" type="button" class="btn btn-primary"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+            document.write('<script src="scripts/blazor.polyfill.min.js"><\/script>');
+        }
+    </script>
+    <script src="_framework/blazor.server.js"></script>
+    <script src="~/scripts/bootstrap.bundle.min.js"></script>
+    <script src="_content/Blazored.Modal/blazored.modal.js"></script>
+    <script src="~/scripts/app.js"></script>
+    <script>
+        // Invoke to update the network connectivity during load
+        updateNetworkStatus();
+    </script>
+</body>
+</html>

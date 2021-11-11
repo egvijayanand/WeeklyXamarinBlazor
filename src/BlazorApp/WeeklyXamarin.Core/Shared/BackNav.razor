@@ -1,0 +1,25 @@
+﻿@inject AppState appState
+@implements IDisposable
+
+<nav class="navbar fixed-top navbar-light bg-white border-bottom box-shadow">
+    <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="@appState.PreviousPage"><i class="fas fa-arrow-left"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        appState.OnChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        appState.OnChanged -= StateHasChanged;
+    }
+}

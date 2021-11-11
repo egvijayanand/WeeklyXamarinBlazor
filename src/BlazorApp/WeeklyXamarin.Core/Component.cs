@@ -1,0 +1,51 @@
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+
+namespace WeeklyXamarin.Core
+{
+    public class Component : ComponentBase, INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected override async Task OnInitializedAsync()
+        {
+            await base.OnInitializedAsync();
+        }
+
+        protected virtual bool SetProperty<T>(ref T field,
+                                                  T value,
+                                                  [CallerMemberName] string propertyName = "",
+                                                  Action onChanging = null,
+                                                  Action onChanged = null,
+                                                  Func<T, T, bool> validateValue = null)
+        {
+            // if value didn't change
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return false;
+            }
+
+            // if value changed but didn't validate
+            if (validateValue != null && !validateValue(field, value))
+            {
+                return false;
+            }
+
+            onChanging?.Invoke();
+            field = value;
+            onChanged?.Invoke();
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Weekly Xamarin</title>
+    <meta name="application-name" content="Weekly Xamarin" />
+    <meta name="theme-color" content="#006bbd" />
+    <!--<base href="/weeklyxamarinwasm/" />-->
+    <base href="/" />
+    <link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <!--<link href="BlazorApp.Wasm.styles.css" rel="stylesheet" />-->
+    <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
+    <link href="styles/blazor.css" rel="stylesheet" />
+    <link href="styles/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="app.webmanifest" rel="manifest" />
+    <link href="favicon.png" rel="icon" sizes="16x16 32x32" />
+    <link href="icon-512.png" rel="apple-touch-icon" sizes="512x512" />
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        div.splash {
+            height: 100%;
+            width: 100%;
+        }
+
+        .splash .center {
+            margin: 0px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="splash">
+            <p class="center">
+                <img src="images/splash.png" />
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal dialog -->
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalButton" type="button" class="btn btn-primary"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="scripts/app.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script src="scripts/bootstrap.bundle.min.js"></script>
+    <script src="_content/Blazored.Modal/blazored.modal.js"></script>
+</body>
+
+</html>

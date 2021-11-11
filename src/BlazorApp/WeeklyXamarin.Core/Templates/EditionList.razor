@@ -1,0 +1,31 @@
+﻿@foreach (var item in Items)
+{
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 mt15i">
+        <div class="card border-dark clickable shadow bg-body rounded" @onclick="() => OnItemClick.InvokeAsync(item.Id)">
+            @if (latestEdition)
+            {
+                <div class="card-header text-center text-uppercase">
+                    Latest
+                </div>
+
+                latestEdition = false;
+            }
+
+            <div class="card-body">
+                <h5 class="card-title">@item.Id.HashTag()</h5>
+                <h6 class="card-subtitle text-muted">@item.PublishDate.Value.ToString("MMM d, yyyy")</h6>
+                <p class="card-text">@item.Summary</p>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private bool latestEdition = true;
+
+    [Parameter]
+    public IReadOnlyList<Edition> Items { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnItemClick { get; set; }
+}
