@@ -1,0 +1,128 @@
+﻿@page "/edition/{editionId}"
+@inherits NetworkAwareComponent
+@inject AppState appState
+@inject IDataStore dataStore
+@inject IDialogService dialogService
+@inject NavigationManager navigator
+@inject IShareService shareService
+@inject INavigationService navigationService
+@implements IDisposable
+
+@if (Edition is not null)
+{
+    <h3>@Edition.Id.HashTag()</h3>
+
+    @if (Edition.PublishDate.HasValue)
+    {
+        <h6 class="text-muted">@Edition.PublishDate.Value.ToString("MMM d, yyyy")</h6>
+    }
+
+    <h5>@Edition.Summary</h5>
+
+    <p>@Edition.Introduction</p>
+
+    @if (Edition.Articles is not null)
+    {
+        <div class="row row-cols-auto">
+            <ArticleList Items="Edition.Articles" OnItemClick="ShowDetails" OnCategoryClick="SearchCategory"
+                         OnShareClick="ShareArticle" OnBookmarkClick="ToggleBookmark" />
+        </div>
+
+        <div class="h20">&nbsp;</div>
+    }
+}
+
+@code {
+    private Edition Edition = new();
+
+    [Parameter]
+    public string EditionId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        appState.SetBackButtonState(true);
+        appState.SetPageTitle(Constants.Navigation.Paths.Editions);
+        appState.SetPreviousPage("editions");
+        this.NetworkStateChanged += Refresh;
+    }
+
+    private async void Refresh(bool connected)
+    {
+        dataStore.UpdateNetworkStatus(connected);
+        Edition = await dataStore.GetEditionAsync(EditionId);
+
+        if (Edition is null)
+        {
+            await dialogService.DisplayAlert("Weekly Xamarin", "Network connection is required to view the details.", "OK");
+            navigator.NavigateTo(appState.PreviousPage);
+        }
+        else
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async void ShowDetails(string articleId)
+    {
+        //appState.SetPreviousPage($"edition/{EditionId}");
+        bool connected = await JSRuntime.InvokeAsync<bool>("readNetworkState");
+
+        if (connected)
+        {
+            await navigationService.GoToAsync(Constants.Navigation.Paths.Article, UriHelper.QueryParameters(articleId, "edition"));
+        }
+        else
+        {
+            await dialogService.DisplayAlert("Weekly Xamarin", "Network connection is required to view an article.", "OK");
+        }
+    }
+
+    private void SearchCategory(string category)
+    {
+        navigator.NavigateTo($"search?q={category}&type=category");
+    }
+
+    private async Task ShareArticle(string articleId)
+    {
+        var article = Edition.Articles.FirstOrDefault(x => x.Id == articleId);
+
+        if (article != null)
+        {
+            var supported = await JSRuntime.InvokeAsync<bool>("webShareSupported");
+
+            if (supported)
+            {
+                await JSRuntime.InvokeVoidAsync("shareArticle", article.Title, article.Url);
+            }
+            else
+            {
+                await shareService.ShareUri("Weekly Xamarin", article.Title, article.Url);
+            }
+        }
+    }
+
+    private async Task ToggleBookmark(string articleId)
+    {
+        var article = Edition.Articles.FirstOrDefault(i => i.Id == articleId);
+
+        if (article is not null)
+        {
+            if (article.IsSaved)
+            {
+                await dataStore.UnbookmarkArticle(article);
+            }
+            else
+            {
+                await dataStore.BookmarkArticle(article);
+            }
+        }
+
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        this.NetworkStateChanged -= Refresh;
+    }
+}

@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@inject AppState appState
+@implements IDisposable
+
+<header class="header" hidden="@(!appState.HasBackButton)">
+    <BackNav />
+</header>
+
+@Body
+
+@code {
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        // Subscribe to changes
+        appState.OnChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        // Unsubscribe from changes
+        appState.OnChanged -= StateHasChanged;
+    }
+}

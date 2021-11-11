@@ -1,0 +1,45 @@
+﻿@inject AppState appState
+@implements IDisposable
+
+<nav class="navbar fixed-bottom navbar-light bg-white border-top box-shadow">
+    <div class="container justify-content-center">
+        <ul class="nav">
+            @foreach (var navItem in navItems)
+            {
+                <li class="nav-item text-center">
+                    <a class="@(navItem.LinkText == appState.PageTitle ? "nav-link text-dark active" : "nav-link text-dark")" href="@navItem.Path"><i class="@navItem.Icon"></i><p>@navItem.LinkText</p></a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>
+
+@code {
+    private List<Menu> navItems = new List<Menu>(new[]
+    {
+        new Menu() { LinkText = Constants.Navigation.Paths.Editions, Icon = "fas fa-book-open", Path = "editions" },
+        new Menu() { LinkText = Constants.Navigation.Paths.Bookmarks, Icon = "fas fa-bookmark", Path = "bookmarks" },
+        new Menu() { LinkText = Constants.Navigation.Paths.Search, Icon = "fas fa-search", Path = "search" },
+        new Menu() { LinkText = Constants.Navigation.Paths.About, Icon = "fas fa-info", Path = "about" }
+    });
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        appState.OnChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        appState.OnChanged -= StateHasChanged;
+    }
+
+    public class Menu
+    {
+        public string LinkText { get; set; }
+
+        public string Icon { get; set; }
+
+        public string Path { get; set; }
+    }
+}

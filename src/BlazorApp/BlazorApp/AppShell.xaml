@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="BlazorApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:BlazorApp.Views">
+    <Shell.Resources />
+    <TabBar>
+        <Tab Title="Weekly Xamarin">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" Route="home" />
+            <!--<ShellContent ContentTemplate="{DataTemplate pages:TestPage1}" Route="home" />-->
+        </Tab>
+    </TabBar>
+</Shell>

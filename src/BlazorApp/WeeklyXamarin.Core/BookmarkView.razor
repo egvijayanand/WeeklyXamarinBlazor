@@ -1,0 +1,85 @@
+﻿@page "/bookmarks"
+@inject AppState appState
+@inject IDataStore dataStore
+@inject NavigationManager navigator
+@inject IJSRuntime jsRuntime
+@inject IDialogService dialogService
+@inject INavigationService navigationService
+@inject IShareService shareService
+
+<div class="row row-cols-auto">
+    @if (bookmark.Articles.Count > 0)
+    {
+        <ArticleList Items="bookmark.Articles" OnItemClick="ShowDetails" OnCategoryClick="SearchCategory"
+                     OnShareClick="ShareArticle" OnBookmarkClick="ToggleBookmark" />
+    }
+    else
+    {
+        <div class="center full-width text-center">
+            <p>Bookmark an article to view here</p>
+        </div>
+    }
+</div>
+
+@code {
+    private Bookmark bookmark = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        appState.SetBackButtonState(false);
+        appState.SetPageTitle(Constants.Navigation.Paths.Bookmarks);
+
+        bookmark = await dataStore.GetBookmarks();
+    }
+
+    private async void ShowDetails(string articleId)
+    {
+        bool connected = await jsRuntime.InvokeAsync<bool>("readNetworkState");
+
+        if (connected)
+        {
+            appState.SetPreviousPage("bookmarks");
+            await navigationService.GoToAsync(Constants.Navigation.Paths.Article, UriHelper.QueryParameters(articleId, "bookmark"));
+        }
+        else
+        {
+            await dialogService.DisplayAlert("Weekly Xamarin", "Network connection is required to view an article.", "OK");
+        }
+    }
+
+    private void SearchCategory(string category)
+    {
+        navigator.NavigateTo($"search?q={category}&type=category");
+    }
+
+    private async Task ShareArticle(string articleId)
+    {
+        var article = bookmark.Articles.FirstOrDefault(x => x.Id == articleId);
+
+        if (article != null)
+        {
+            var supported = await jsRuntime.InvokeAsync<bool>("webShareSupported");
+
+            if (supported)
+            {
+                await jsRuntime.InvokeVoidAsync("shareArticle", article.Title, article.Url);
+            }
+            else
+            {
+                await shareService.ShareUri("Weekly Xamarin", article.Title, article.Url);
+            }
+        }
+    }
+
+    private async Task ToggleBookmark(string articleId)
+    {
+        var article = bookmark.Articles.FirstOrDefault(i => i.Id == articleId);
+
+        if (article != null)
+        {
+            await dataStore.UnbookmarkArticle(article);
+            bookmark.Articles.Remove(article);
+        }
+    }
+}

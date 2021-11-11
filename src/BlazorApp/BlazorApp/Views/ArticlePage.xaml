@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:MauiPage
+    x:Class="BlazorApp.Views.ArticlePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BlazorApp.ViewModels"
+    xmlns:pages="clr-namespace:BlazorApp.Views"
+    Title="{Binding Article.Title}"
+    local:ViewModelLocator.AutoWireViewModel="True"
+    x:DataType="local:ArticleViewModel"
+    BackgroundColor="White">
+    <WebView
+        HorizontalOptions="FillAndExpand"
+        Source="{Binding Article.Url}"
+        VerticalOptions="FillAndExpand" />
+</pages:MauiPage>
