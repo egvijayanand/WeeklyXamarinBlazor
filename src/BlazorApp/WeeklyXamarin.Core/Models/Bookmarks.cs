@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace WeeklyXamarin.Core.Models
+﻿namespace WeeklyXamarin.Core.Models
 {
     public class Bookmark
     {

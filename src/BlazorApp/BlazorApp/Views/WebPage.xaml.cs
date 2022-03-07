@@ -1,7 +1,4 @@
 ﻿using BlazorApp.ViewModels;
-using Microsoft.Maui.Controls;
-using System.Collections.Generic;
-using System.Net;
 using WeeklyXamarin.Core.Helpers;
 
 namespace BlazorApp.Views
@@ -15,10 +12,9 @@ namespace BlazorApp.Views
             InitializeComponent();
         }
 
-        public WebPage(Dictionary<string, object> dict)
+        public WebPage(Dictionary<string, object> dict) : this()
         {
             this.dict = dict;
-            InitializeComponent();
         }
 
         protected override async void OnAppearing()

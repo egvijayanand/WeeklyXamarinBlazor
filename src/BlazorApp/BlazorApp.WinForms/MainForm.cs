@@ -1,13 +1,5 @@
-﻿using BlazorApp.WinForms.Services;
-using Blazored.LocalStorage;
-using Blazored.Modal;
-using Microsoft.AspNetCore.Components.WebView.WindowsForms;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Windows.Forms;
+﻿using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using WeeklyXamarin.Core;
-using WeeklyXamarin.Core.Helpers;
-using WeeklyXamarin.Core.Services;
 
 namespace BlazorApp.WinForms
 {
@@ -16,18 +8,6 @@ namespace BlazorApp.WinForms
         public MainForm()
         {
             InitializeComponent();
-
-            /*var services = new ServiceCollection();
-            services.AddBlazorWebView();
-            services.AddBlazoredModal();
-            services.AddBlazoredLocalStorage();
-            services.AddSingleton<AppState>();
-            services.AddScoped<IDataStore, GitHubDataStore>();
-            services.AddSingleton<INavigationService, NavigationService>();
-            services.AddHttpClient(Constants.DataStore.GitHub, client =>
-            {
-                client.BaseAddress = new Uri("https://raw.githubusercontent.com/weeklyxamarin/WeeklyXamarin.content/master/content/");
-            });*/
 
             var blazor = new BlazorWebView()
             {
@@ -40,5 +20,9 @@ namespace BlazorApp.WinForms
             Controls.Add(blazor);
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            BringToFront();
+        }
     }
 }

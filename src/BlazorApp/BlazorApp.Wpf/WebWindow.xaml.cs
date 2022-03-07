@@ -1,10 +1,7 @@
 ﻿using BlazorApp.Wpf.Helpers;
-using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
-using System;
 using System.ComponentModel;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;

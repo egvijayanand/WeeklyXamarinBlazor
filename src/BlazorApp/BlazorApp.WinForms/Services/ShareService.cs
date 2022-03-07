@@ -1,19 +1,39 @@
 ﻿using Microsoft.Maui.Essentials;
-using System.Threading.Tasks;
-using WeeklyXamarin.Core.Services;
 
 namespace BlazorApp.WinForms.Services
 {
     public class ShareService : IShareService
     {
+        readonly IDialogService dialogService;
+
+        public ShareService(IDialogService dialogService)
+        {
+            this.dialogService = dialogService;
+
+        }
+
         public async Task ShareText(string title, string text)
         {
-            await Share.RequestAsync(text, title);
+            try
+            {
+                await Share.RequestAsync(text, title);
+            }
+            catch (Exception ex)
+            {
+                await dialogService.DisplayAlert(title, ex.Message, "OK");
+            }
         }
 
         public async Task ShareUri(string title, string text, string url)
         {
-            await Share.RequestAsync(new ShareTextRequest(text, title) { Uri = url });
+            try
+            {
+                await Share.RequestAsync(new ShareTextRequest(text, title) { Uri = url });
+            }
+            catch (Exception ex)
+            {
+                await dialogService.DisplayAlert(title, ex.Message, "OK");
+            }
         }
     }
 }

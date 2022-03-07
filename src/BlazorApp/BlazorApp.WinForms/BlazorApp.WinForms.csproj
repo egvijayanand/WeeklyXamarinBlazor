@@ -3,8 +3,9 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows10.0.19041</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-		<!--<UseMauiEssentials>true</UseMauiEssentials>-->
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseMauiEssentials>true</UseMauiEssentials>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="wwwroot\styles\app.css" />
@@ -66,18 +67,14 @@
 		<None Include="wwwroot\scripts\bootstrap.bundle.min.js.map" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Blazored.LocalStorage"
-						  Version="4.1.5" />
-		<PackageReference Include="Blazored.Modal"
-						  Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms"
-						  Version="6.0.101-preview.10.*" />
-		<PackageReference Include="Microsoft.Extensions.Hosting"
-						  Version="6.0.0" />
-		<PackageReference Include="Microsoft.Web.WebView2"
-						  Version="1.0.961.33" />
-		<PackageReference Include="Microsoft.Maui.Essentials"
-						  Version="6.0.100-preview.5.798" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
+		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.101-preview.13.*" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre1" />
+		<!--<PackageReference Include="Microsoft.Maui.Essentials"
+						  Version="6.0.100-preview.5.798" />-->
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />

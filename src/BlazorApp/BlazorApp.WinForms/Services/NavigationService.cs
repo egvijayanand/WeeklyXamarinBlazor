@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using WeeklyXamarin.Core.Helpers;
-using WeeklyXamarin.Core.Services;
-
-namespace BlazorApp.WinForms.Services
+﻿namespace BlazorApp.WinForms.Services
 {
     public class NavigationService : INavigationService
     {
-        public Task GoBackAsync()
+        public Task GoBackAsync(bool modal = false)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +14,7 @@ namespace BlazorApp.WinForms.Services
 
         public Task GoToAsync(string uri, string key, string value)
         {
-            if (uri == Constants.Navigation.Paths.Web)
+            if (uri == Paths.Web)
             {
                 WebForm.Instance.WebView.CoreWebView2.Navigate(value);
                 WebForm.Instance.Show();
@@ -32,9 +26,9 @@ namespace BlazorApp.WinForms.Services
 
         public async Task GoToAsync(string uri, Dictionary<string, object> parameters)
         {
-            if (uri == Constants.Navigation.Paths.Article && Program.Routes[uri] is WebForm webForm)
+            if (uri == Paths.Article && Program.Routes[uri] is WebForm webForm)
             {
-                await webForm.Navigate(parameters[Constants.Navigation.ParameterNames.ArticleId].ToString());
+                await webForm.Navigate(parameters[ParameterNames.ArticleId].ToString());
             }
         }
     }

@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Linq;
-
-namespace WeeklyXamarin.Core.Models
+﻿namespace WeeklyXamarin.Core.Models
 {
     public record Article
     {

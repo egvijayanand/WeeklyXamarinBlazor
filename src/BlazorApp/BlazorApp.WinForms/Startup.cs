@@ -1,15 +1,13 @@
-using Microsoft.Maui.Essentials;
-using System;
-using System.Text.Json;
+using BlazorApp.WinForms.Extensions;
 using BlazorApp.WinForms.Services;
 using Blazored.LocalStorage;
 using Blazored.Modal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VijayAnand.MauiToolkit.Core;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;
-using BlazorApp.WinForms.Extensions;
 
 namespace BlazorApp.WinForms
 {

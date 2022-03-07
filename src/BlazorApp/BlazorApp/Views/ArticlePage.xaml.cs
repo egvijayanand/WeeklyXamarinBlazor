@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using System.Collections.Generic;
-using WeeklyXamarin.Core.Helpers;
+﻿using WeeklyXamarin.Core.Helpers;
 
 namespace BlazorApp.Views
 {

@@ -1,15 +1,13 @@
-﻿using BlazorApp.Services;
-using BlazorApp.ViewModels;
+﻿using BlazorApp.ViewModels;
 using Blazored.LocalStorage;
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
-using System;
+using VijayAnand.MauiToolkit;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;
+
+#nullable enable
 
 namespace BlazorApp
 {
@@ -21,6 +19,7 @@ namespace BlazorApp
 
             builder.RegisterBlazorMauiWebView()
                    .UseMauiApp<App>()
+                   .UseVijayAnandMauiToolkit()
                    .ConfigureFonts(fonts =>
                    {
                        fonts.AddFont("OpenSans-Regular.ttf", "OSR");
@@ -28,7 +27,6 @@ namespace BlazorApp
                        fonts.AddFont("fa-regular-400.ttf", "FAR");
                        fonts.AddFont("fa-solid-900.ttf", "FAS");
                    })
-                   .UseMauiApp<App>()
                    .ConfigureServices(services =>
                    {
                        services.AddBlazorWebView();
@@ -36,9 +34,6 @@ namespace BlazorApp
                        services.AddBlazoredLocalStorage();
 
                        services.AddSingleton<AppState>();
-                       services.AddSingleton<IDialogService, DialogService>();
-                       services.AddSingleton<INavigationService, NavigationService>();
-                       services.AddSingleton<IShareService, ShareService>();
 
                        services.AddScoped<IDataStore, GitHubDataStore>();
                        services.AddHttpClient(Constants.DataStore.GitHub, client =>

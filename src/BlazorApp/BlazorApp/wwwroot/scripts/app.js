@@ -6,7 +6,8 @@
     }
 };
 
-window.webShareSupported = () => !!navigator.share;
+//window.webShareSupported = () => !!navigator.share;
+window.webShareSupported = () => false;
 
 window.shareArticle = async (text, url) => {
     if (!!navigator.share) {

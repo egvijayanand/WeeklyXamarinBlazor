@@ -1,6 +1,4 @@
 ﻿using BlazorApp.Views;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using WeeklyXamarin.Core.Helpers;
 
 namespace BlazorApp

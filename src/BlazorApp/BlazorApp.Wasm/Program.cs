@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
+using VijayAnand.MauiToolkit.Core;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;

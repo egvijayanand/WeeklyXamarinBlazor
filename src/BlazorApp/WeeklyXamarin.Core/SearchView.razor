@@ -84,18 +84,18 @@
     {
         base.OnInitialized();
         appState.SetBackButtonState(false);
-        appState.SetPageTitle(Constants.Navigation.Paths.Search);
+        appState.SetPageTitle(Paths.Search);
         this.NetworkStateChanged += Refresh;
 
-        if (navigator.TryGetQueryString<string>(Constants.Navigation.ParameterNames.SearchType, out string searchType))
+        if (navigator.TryGetQueryString<string>(ParameterNames.SearchType, out string searchType))
         {
-            if (searchType.Equals(Constants.Navigation.FilterType.Category, StringComparison.OrdinalIgnoreCase))
+            if (searchType.Equals(FilterType.Category, StringComparison.OrdinalIgnoreCase))
             {
                 searchByCategory = true;
             }
         }
 
-        if (navigator.TryGetQueryString<string>(Constants.Navigation.ParameterNames.SearchQuery, out string queryText))
+        if (navigator.TryGetQueryString<string>(ParameterNames.SearchQuery, out string queryText))
         {
             SearchTerm = queryText;
         }
@@ -246,7 +246,7 @@
         if (connected)
         {
             appState.SetPreviousPage($"search?q={SearchTerm}{(searchByCategory ? "&type=category" : string.Empty)}");
-            await navigationService.GoToAsync(Constants.Navigation.Paths.Article, UriHelper.QueryParameters(articleId, "search"));
+            await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "search"));
         }
         else
         {

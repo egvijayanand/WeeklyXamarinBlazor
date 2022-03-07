@@ -42,7 +42,7 @@
     {
         base.OnInitialized();
         appState.SetBackButtonState(true);
-        appState.SetPageTitle(Constants.Navigation.Paths.Editions);
+        appState.SetPageTitle(Paths.Editions);
         appState.SetPreviousPage("editions");
         this.NetworkStateChanged += Refresh;
     }
@@ -70,7 +70,7 @@
 
         if (connected)
         {
-            await navigationService.GoToAsync(Constants.Navigation.Paths.Article, UriHelper.QueryParameters(articleId, "edition"));
+            await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "edition"));
         }
         else
         {

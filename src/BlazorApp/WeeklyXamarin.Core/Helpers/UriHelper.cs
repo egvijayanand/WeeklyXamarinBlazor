@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using static WeeklyXamarin.Core.Helpers.Constants.Navigation;
 
 namespace WeeklyXamarin.Core.Helpers
 {
@@ -8,7 +8,7 @@ namespace WeeklyXamarin.Core.Helpers
         {
             return new Dictionary<string, object>
             {
-                { Constants.Navigation.ParameterNames.ArticleId, articleId },
+                { ParameterNames.ArticleId, articleId },
                 { Constants.Analytics.ParameterNames.Content, content }
             };
         }
