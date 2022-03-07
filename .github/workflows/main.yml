@@ -11,8 +11,9 @@ on:
     - 'README.md'
   pull_request:
     branches: [ main ]
-    paths-ignore:
-    - 'README.md'
+    paths:
+    - '!README.md'
+    - '!.github\workflows\**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,8 +24,8 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build-blazor-wasm"
-  build-blazor-wasm:
+  # This workflow contains a single job called "build-weekly-xamarin-blazor"
+  build-weekly-xamarin-blazor:
     # The type of runner that the job will run on
     runs-on: windows-latest
     defaults:
@@ -45,14 +46,18 @@ jobs:
           # Whether prerelease versions should be matched with non-exact versions (for example 5.0.0-preview.6 being matched by 5, 5.0, 5.x or 5.0.x). Defaults to false if not provided.
           include-prerelease: true
 
+      # Install Maui workload
+      - name: Install Maui workload
+        run: dotnet workload install maui
+
       # Install WebAssembly workload
       - name: Install WebAssembly workload
         run: dotnet workload install wasm-tools
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore .\BlazorApp.Wasm\BlazorApp.Wasm.csproj
+        run: dotnet restore
 
       # Build the project in Release mode
-      - name: Build in Release mode and Publish
-        run: dotnet build .\BlazorApp.Wasm\BlazorApp.Wasm.csproj -c Release --no-restore
+      - name: Build the Solution in Release mode
+        run: dotnet build -c Release --no-restore
