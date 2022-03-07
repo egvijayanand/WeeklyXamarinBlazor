@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using System;
-
-namespace BlazorApp.Services
+﻿namespace BlazorApp.Services
 {
     public static class AppService
     {

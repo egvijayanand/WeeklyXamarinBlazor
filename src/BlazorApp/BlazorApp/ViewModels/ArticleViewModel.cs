@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using WeeklyXamarin.Core.Helpers;
+﻿using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;
 

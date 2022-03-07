@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WeeklyXamarin.Core.Models
+﻿namespace WeeklyXamarin.Core.Models
 {
     public record Edition
     {

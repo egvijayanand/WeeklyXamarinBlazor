@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using VijayAnand.MauiToolkit.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;
@@ -22,7 +20,7 @@ namespace BlazorApp.Server.Services
             this.dataStore = dataStore;
         }
 
-        public Task GoBackAsync()
+        public Task GoBackAsync(bool modal = false)
         {
             throw new NotImplementedException();
         }

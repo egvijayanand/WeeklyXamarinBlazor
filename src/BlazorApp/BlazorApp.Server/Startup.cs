@@ -1,12 +1,7 @@
 using BlazorApp.Server.Services;
 using Blazored.LocalStorage;
 using Blazored.Modal;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
+using VijayAnand.MauiToolkit.Core;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;

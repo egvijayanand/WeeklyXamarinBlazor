@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 using System.Windows;
 using WeeklyXamarin.Core.Helpers;
 using static BlazorApp.Wpf.Startup;
@@ -17,8 +16,8 @@ namespace BlazorApp.Wpf
         {
             Init();
             var window = Wpf.Startup.Services.GetService<WebWindow>();
-            Routes.Add(Constants.Navigation.Paths.Article, window);
-            Routes.Add(Constants.Navigation.Paths.Web, window);
+            Routes.Add(Paths.Article, window);
+            Routes.Add(Paths.Web, window);
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)

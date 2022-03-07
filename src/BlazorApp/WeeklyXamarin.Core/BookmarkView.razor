@@ -28,7 +28,7 @@
     {
         await base.OnInitializedAsync();
         appState.SetBackButtonState(false);
-        appState.SetPageTitle(Constants.Navigation.Paths.Bookmarks);
+        appState.SetPageTitle(Paths.Bookmarks);
 
         bookmark = await dataStore.GetBookmarks();
     }
@@ -40,7 +40,7 @@
         if (connected)
         {
             appState.SetPreviousPage("bookmarks");
-            await navigationService.GoToAsync(Constants.Navigation.Paths.Article, UriHelper.QueryParameters(articleId, "bookmark"));
+            await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "bookmark"));
         }
         else
         {

@@ -1,6 +1,4 @@
 ﻿using BlazorApp.Views;
-using Microsoft.Maui.Controls;
-using System;
 using System.Globalization;
 using System.Reflection;
 

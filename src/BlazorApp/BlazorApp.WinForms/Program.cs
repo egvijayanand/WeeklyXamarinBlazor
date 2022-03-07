@@ -1,8 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Windows.Forms;
 using WeeklyXamarin.Core.Helpers;
 
 namespace BlazorApp.WinForms
@@ -24,8 +20,8 @@ namespace BlazorApp.WinForms
             Application.SetCompatibleTextRenderingDefault(false);
 
             var webForm = Startup.Services.GetService<WebForm>();
-            Routes.Add(Constants.Navigation.Paths.Article, webForm);
-            Routes.Add(Constants.Navigation.Paths.Web, webForm);
+            Routes.Add(Paths.Article, webForm);
+            Routes.Add(Paths.Web, webForm);
 
             webForm.Show();
 

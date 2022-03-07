@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using WeeklyXamarin.Core.Services;
+﻿using VijayAnand.MauiToolkit.Core;
 
 namespace BlazorApp.Wasm.Services
 {

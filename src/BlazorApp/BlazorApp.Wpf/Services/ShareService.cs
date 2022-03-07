@@ -1,6 +1,4 @@
 ﻿using Microsoft.Maui.Essentials;
-using System.Threading.Tasks;
-using WeeklyXamarin.Core.Services;
 
 namespace BlazorApp.Wpf.Services
 {

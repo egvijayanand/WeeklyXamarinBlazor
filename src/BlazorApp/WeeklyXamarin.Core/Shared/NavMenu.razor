@@ -17,10 +17,10 @@
 @code {
     private List<Menu> navItems = new List<Menu>(new[]
     {
-        new Menu() { LinkText = Constants.Navigation.Paths.Editions, Icon = "fas fa-book-open", Path = "editions" },
-        new Menu() { LinkText = Constants.Navigation.Paths.Bookmarks, Icon = "fas fa-bookmark", Path = "bookmarks" },
-        new Menu() { LinkText = Constants.Navigation.Paths.Search, Icon = "fas fa-search", Path = "search" },
-        new Menu() { LinkText = Constants.Navigation.Paths.About, Icon = "fas fa-info", Path = "about" }
+        new Menu() { LinkText = Paths.Editions, Icon = "fas fa-book-open", Path = "editions" },
+        new Menu() { LinkText = Paths.Bookmarks, Icon = "fas fa-bookmark", Path = "bookmarks" },
+        new Menu() { LinkText = Paths.Search, Icon = "fas fa-search", Path = "search" },
+        new Menu() { LinkText = Paths.About, Icon = "fas fa-info", Path = "about" }
     });
 
     protected override void OnInitialized()

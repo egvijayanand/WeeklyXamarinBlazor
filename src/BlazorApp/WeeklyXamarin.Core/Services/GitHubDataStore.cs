@@ -1,14 +1,7 @@
-﻿using WeeklyXamarin.Core.Helpers;
-using WeeklyXamarin.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using Blazored.LocalStorage;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Blazored.LocalStorage;
-using Microsoft.JSInterop;
+using WeeklyXamarin.Core.Helpers;
+using WeeklyXamarin.Core.Models;
 
 namespace WeeklyXamarin.Core.Services
 {

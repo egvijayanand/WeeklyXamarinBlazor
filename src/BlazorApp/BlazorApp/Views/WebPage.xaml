@@ -10,9 +10,9 @@
     x:DataType="local:WebViewModel"
     BackgroundColor="White">
     <WebView
-        HorizontalOptions="FillAndExpand"
+        HorizontalOptions="Fill"
         Navigated="WebView_Navigated"
         Navigating="WebView_Navigating"
         Source="{Binding Url}"
-        VerticalOptions="FillAndExpand" />
+        VerticalOptions="Fill" />
 </pages:MauiPage>

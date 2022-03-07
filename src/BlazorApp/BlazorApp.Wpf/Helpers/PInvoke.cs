@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
 namespace BlazorApp.Wpf.Helpers
 {
-    public class PInvoke
+    class PInvoke
     {
         [DllImport("wininet.dll")]
-        public static extern bool InternetGetConnectedState(out int lpdwFlags, int dwReserved);
+        internal static extern bool InternetGetConnectedState(out int lpdwFlags, int dwReserved);
     }
 
     [Flags]
-    public enum InternetGetConnectedState
+    enum InternetGetConnectedState
     {
         Modem = 0x01,
         LAN = 0x02,
