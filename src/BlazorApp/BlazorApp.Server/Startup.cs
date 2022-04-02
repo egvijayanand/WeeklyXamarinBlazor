@@ -1,7 +1,7 @@
 using BlazorApp.Server.Services;
 using Blazored.LocalStorage;
 using Blazored.Modal;
-using VijayAnand.MauiToolkit.Core;
+using VijayAnand.MauiToolkit.Core.Services;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;

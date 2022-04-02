@@ -6,40 +6,40 @@
 @implements IDisposable
 
 <div class="row row-cols-auto">
-    <EditionList Items="editions" OnItemClick="ShowDetails" />
+	<EditionList Items="editions" OnItemClick="ShowDetails" />
 </div>
 
 <div class="h20">&nbsp;</div>
 
 @code {
-    //DotNetObjectReference<EditionsView> objRef;
+	//DotNetObjectReference<EditionsView> objRef;
 
-    private readonly ObservableRangeCollection<Edition> editions = new();
+	private readonly ObservableRangeCollection<Edition> editions = new();
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        appState.SetBackButtonState(false);
-        appState.SetPageTitle(Paths.Editions);
-        this.NetworkStateChanged += Refresh;
-    }
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		appState.SetBackButtonState(false);
+		appState.SetPageTitle(Paths.Editions);
+		this.NetworkStateChanged += Refresh;
+	}
 
-    private void ShowDetails(string editionId)
-    {
-        navigator.NavigateTo($"edition/{editionId}");
-    }
+	private void ShowDetails(string editionId)
+	{
+		navigator.NavigateTo($"edition/{editionId}");
+	}
 
-    private async void Refresh(bool connected)
-    {
-        dataStore.UpdateNetworkStatus(connected);
+	private async void Refresh(bool connected)
+	{
+		dataStore.UpdateNetworkStatus(connected);
 
-        editions.Clear();
-        (await dataStore.GetEditionsAsync()).AddTo(editions);
-        StateHasChanged();
-    }
+		editions.Clear();
+		(await dataStore.GetEditionsAsync()).AddTo(editions);
+		StateHasChanged();
+	}
 
-    public void Dispose()
-    {
-        this.NetworkStateChanged -= Refresh;
-    }
+	public void Dispose()
+	{
+		this.NetworkStateChanged -= Refresh;
+	}
 }

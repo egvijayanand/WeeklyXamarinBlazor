@@ -2,7 +2,7 @@
 {
     public class NavigationService : INavigationService
     {
-        public Task GoBackAsync(bool modal = false)
+        public Task GoBackAsync()
         {
             throw new NotImplementedException();
         }
@@ -24,7 +24,7 @@
             return Task.FromResult(0);
         }
 
-        public async Task GoToAsync(string uri, Dictionary<string, object> parameters)
+        public async Task GoToAsync(string uri, IDictionary<string, object> parameters)
         {
             if (uri == Paths.Article && Program.Routes[uri] is WebForm webForm)
             {

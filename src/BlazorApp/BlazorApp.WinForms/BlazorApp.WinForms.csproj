@@ -69,12 +69,10 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.101-preview.13.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.200-preview.14.*" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre1" />
-		<!--<PackageReference Include="Microsoft.Maui.Essentials"
-						  Version="6.0.100-preview.5.798" />-->
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1150.38" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre4" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />

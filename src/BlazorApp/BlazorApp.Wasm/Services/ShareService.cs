@@ -1,4 +1,4 @@
-﻿using VijayAnand.MauiToolkit.Core;
+﻿using VijayAnand.MauiToolkit.Core.Services;
 
 namespace BlazorApp.Wasm.Services
 {

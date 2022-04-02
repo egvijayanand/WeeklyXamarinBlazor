@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using VijayAnand.MauiToolkit.Core;
+using VijayAnand.MauiToolkit.Core.Services;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;
@@ -20,7 +20,7 @@ namespace BlazorApp.Wasm.Services
             this.dataStore = dataStore;
         }
 
-        public Task GoBackAsync(bool modal = false)
+        public Task GoBackAsync()
         {
             throw new NotImplementedException();
         }
@@ -43,7 +43,7 @@ namespace BlazorApp.Wasm.Services
             }
         }
 
-        public async Task GoToAsync(string uri, Dictionary<string, object> parameters)
+        public async Task GoToAsync(string uri, IDictionary<string, object> parameters)
         {
             if (uri == Constants.Navigation.Paths.Article)
             {
