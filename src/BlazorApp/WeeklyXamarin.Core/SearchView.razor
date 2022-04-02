@@ -11,295 +11,295 @@
 <div class="h20"></div>
 
 <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="searchText" @ref="txtSearch" @bind="SearchTerm" @bind:event="oninput"
-           @onkeydown="OnKeyDown" @onkeyup="OnKeyUp" placeholder="Enter your search term here" />
-    <label for="searchText">Search term</label>
+	<input type="text" class="form-control" id="searchText" @ref="txtSearch" @bind="SearchTerm" @bind:event="oninput"
+		   @onkeydown="OnKeyDown" @onkeyup="OnKeyUp" placeholder="Enter your search term here" />
+	<label for="searchText">Search term</label>
 </div>
 
 <div class="h5">&nbsp;</div>
 
 <div class="row justify-content-center">
-    @foreach (var category in categories)
-    {
-        <div class="@GetCategoryCssClass(category.Name)" @onclick="() => SearchCategory(category.Name)">@category.Name</div>
-    }
+	@foreach (var category in categories)
+	{
+		<div class="@GetCategoryCssClass(category.Name)" @onclick="() => SearchCategory(category.Name)">@category.Name</div>
+	}
 </div>
 
 <div>
-    @if (articles.Count > 0)
-    {
-        <div @ref="searchOutput" class="row row-cols-auto">
-            <ArticleList Items="articles" OnItemClick="ShowDetails" OnCategoryClick="SearchCategory"
-                         OnShareClick="ShareArticle" OnBookmarkClick="ToggleBookmark" />
-        </div>
+	@if (articles.Count > 0)
+	{
+		<div @ref="searchOutput" class="row row-cols-auto">
+			<ArticleList Items="articles" OnItemClick="ShowDetails" OnCategoryClick="SearchCategory"
+					 OnShareClick="ShareArticle" OnBookmarkClick="ToggleBookmark" />
+		</div>
 
-        <div class="h10"></div>
-    }
-    else
-    {
-        <div class="full-height text-center" hidden="@hasSearchOutput">
-            <div class="center full-width">
-                <p>@searchResult</p>
-            </div>
-        </div>
-    }
+		<div class="h10"></div>
+	}
+	else
+	{
+		<div class="full-height text-center" hidden="@hasSearchOutput">
+			<div class="center full-width">
+				<p>@searchResult</p>
+			</div>
+		</div>
+	}
 </div>
 
 @code {
-    private ElementReference txtSearch;
-    private ElementReference searchOutput;
+	private ElementReference txtSearch;
+	private ElementReference searchOutput;
 
-    //private bool initializing;
+	//private bool initializing;
 
-    private string searchTerm;
-    private string previousSearchTerm;
+	private string searchTerm;
+	private string previousSearchTerm;
 
-    private bool searchByCategory;
-    private readonly List<Category> categories = new();
-    private readonly ObservableRangeCollection<Article> articles = new();
+	private bool searchByCategory;
+	private readonly List<Category> categories = new();
+	private readonly ObservableRangeCollection<Article> articles = new();
 
-    private string searchResult;
-    private bool hasSearchOutput;
+	private string searchResult;
+	private bool hasSearchOutput;
 
-    [CascadingParameter]
-    public IModalService Modal { get; set; }
+	[CascadingParameter]
+	public IModalService Modal { get; set; }
 
-    public string SearchTerm
-    {
-        get => searchTerm;
-        set => SetProperty(ref searchTerm, value, onChanged: () =>
-        {
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                articles.Clear();
-                previousSearchTerm = string.Empty;
-                hasSearchOutput = false;
-                searchResult = "Enter keyword to search . . .";
-                StateHasChanged();
-            }
-        });
-    }
+	public string SearchTerm
+	{
+		get => searchTerm;
+		set => SetProperty(ref searchTerm, value, onChanged: () =>
+		{
+			if (string.IsNullOrEmpty(searchTerm))
+			{
+				articles.Clear();
+				previousSearchTerm = string.Empty;
+				hasSearchOutput = false;
+				searchResult = "Enter keyword to search . . .";
+				StateHasChanged();
+			}
+		});
+	}
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        appState.SetBackButtonState(false);
-        appState.SetPageTitle(Paths.Search);
-        this.NetworkStateChanged += Refresh;
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		appState.SetBackButtonState(false);
+		appState.SetPageTitle(Paths.Search);
+		this.NetworkStateChanged += Refresh;
 
-        if (navigator.TryGetQueryString<string>(ParameterNames.SearchType, out string searchType))
-        {
-            if (searchType.Equals(FilterType.Category, StringComparison.OrdinalIgnoreCase))
-            {
-                searchByCategory = true;
-            }
-        }
+		if (navigator.TryGetQueryString<string>(ParameterNames.SearchType, out string searchType))
+		{
+			if (searchType.Equals(FilterType.Category, StringComparison.OrdinalIgnoreCase))
+			{
+				searchByCategory = true;
+			}
+		}
 
-        if (navigator.TryGetQueryString<string>(ParameterNames.SearchQuery, out string queryText))
-        {
-            SearchTerm = queryText;
-        }
-    }
+		if (navigator.TryGetQueryString<string>(ParameterNames.SearchQuery, out string queryText))
+		{
+			SearchTerm = queryText;
+		}
+	}
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
 
-        if (articles.Count > 0)
-        {
-            await JSRuntime.InvokeVoidAsync("positionAt", searchOutput);
-        }
-    }
+		if (articles.Count > 0)
+		{
+			await JSRuntime.InvokeVoidAsync("positionAt", searchOutput);
+		}
+	}
 
-    private async void Refresh(bool connected)
-    {
-        dataStore.UpdateNetworkStatus(connected);
+	private async void Refresh(bool connected)
+	{
+		dataStore.UpdateNetworkStatus(connected);
 
-        categories.Clear();
-        (await dataStore.GetCategories())?.AddTo(categories);
+		categories.Clear();
+		(await dataStore.GetCategories())?.AddTo(categories);
 
-        StateHasChanged();
+		StateHasChanged();
 
-        if (!string.IsNullOrEmpty(SearchTerm) && !await ExecuteSearch())
-        {
-            StateHasChanged();
-        }
-    }
+		if (!string.IsNullOrEmpty(SearchTerm) && !await ExecuteSearch())
+		{
+			StateHasChanged();
+		}
+	}
 
-    private async void OnKeyDown(KeyboardEventArgs e)
-    {
-        if (e.Code == Constants.Keys.Enter || e.Key == Constants.Keys.Enter)
-        {
-            if (await ExecuteSearch())
-            {
-                StateHasChanged();
-            }
-        }
-        else
-        {
-            searchByCategory = false;
-        }
-    }
+	private async void OnKeyDown(KeyboardEventArgs e)
+	{
+		if (e.Code == Constants.Keys.Enter || e.Key == Constants.Keys.Enter)
+		{
+			if (await ExecuteSearch())
+			{
+				StateHasChanged();
+			}
+		}
+		else
+		{
+			searchByCategory = false;
+		}
+	}
 
-    private async void OnKeyUp(KeyboardEventArgs e)
-    {
-        if (e.Code == Constants.Keys.Enter || e.Key == Constants.Keys.Enter)
-        {
-            await JSRuntime.InvokeVoidAsync("removeFocus", txtSearch);
-        }
-    }
+	private async void OnKeyUp(KeyboardEventArgs e)
+	{
+		if (e.Code == Constants.Keys.Enter || e.Key == Constants.Keys.Enter)
+		{
+			await JSRuntime.InvokeVoidAsync("removeFocus", txtSearch);
+		}
+	}
 
-    public void Dispose()
-    {
-        categories.Clear();
-        this.NetworkStateChanged -= Refresh;
-    }
+	public void Dispose()
+	{
+		categories.Clear();
+		this.NetworkStateChanged -= Refresh;
+	}
 
-    private async Task<bool> ExecuteSearch()
-    {
-        if (string.IsNullOrWhiteSpace(searchTerm))
-        {
-            articles.Clear();
-            return false;
-        }
-        else if (searchTerm == previousSearchTerm)
-        {
-            return false;
-        }
-        else
-        {
-            previousSearchTerm = searchTerm;
-            articles.Clear();
-        }
+	private async Task<bool> ExecuteSearch()
+	{
+		if (string.IsNullOrWhiteSpace(searchTerm))
+		{
+			articles.Clear();
+			return false;
+		}
+		else if (searchTerm == previousSearchTerm)
+		{
+			return false;
+		}
+		else
+		{
+			previousSearchTerm = searchTerm;
+			articles.Clear();
+		}
 
-        var options = new ModalOptions()
-        {
-            HideCloseButton = true,
-            DisableBackgroundCancel = true,
-            HideHeader = true
-        };
+		var options = new ModalOptions()
+			{
+				HideCloseButton = true,
+				DisableBackgroundCancel = true,
+				HideHeader = true
+			};
 
-        var loading = Modal.Show<Loading>(string.Empty, options);
+		var loading = Modal.Show<Loading>(string.Empty, options);
 
-        try
-        {
-            var cts = new CancellationTokenSource();
-            IAsyncEnumerable<Article> articleAsync;
+		try
+		{
+			var cts = new CancellationTokenSource();
+			IAsyncEnumerable<Article> articleAsync;
 
-            if (searchByCategory)
-            {
-                articleAsync = dataStore.GetArticleByCategoryAsync(searchTerm, cts.Token);
-            }
-            else
-            {
-                articleAsync = dataStore.GetArticleFromSearchAsync(searchTerm, cts.Token);
-            }
+			if (searchByCategory)
+			{
+				articleAsync = dataStore.GetArticleByCategoryAsync(searchTerm, cts.Token);
+			}
+			else
+			{
+				articleAsync = dataStore.GetArticleFromSearchAsync(searchTerm, cts.Token);
+			}
 
-            await foreach (var article in articleAsync)
-            {
-                if (!cts.IsCancellationRequested)
-                {
-                    articles.Add(article);
-                }
-            }
+			await foreach (var article in articleAsync)
+			{
+				if (!cts.IsCancellationRequested)
+				{
+					articles.Add(article);
+				}
+			}
 
-            if (articles.Count > 0)
-            {
-                hasSearchOutput = true;
-                searchResult = string.Empty;
-            }
-            else
-            {
-                hasSearchOutput = false;
-                searchResult = $"No article matched with the search keyword - {searchTerm}";
-            }
-        }
-        catch (Exception ex)
-        {
-            Trace.WriteLine($"Error occurred during {(searchByCategory ? "category" : "keyword")} search - {ex.Message}");
-        }
-        finally
-        {
-            loading.Close();
-        }
+			if (articles.Count > 0)
+			{
+				hasSearchOutput = true;
+				searchResult = string.Empty;
+			}
+			else
+			{
+				hasSearchOutput = false;
+				searchResult = $"No article matched with the search keyword - {searchTerm}";
+			}
+		}
+		catch (Exception ex)
+		{
+			Trace.WriteLine($"Error occurred during {(searchByCategory ? "category" : "keyword")} search - {ex.Message}");
+		}
+		finally
+		{
+			loading.Close();
+		}
 
-        return true;
-    }
+		return true;
+	}
 
-    private string GetCategoryCssClass(string category)
-    {
-        if (searchByCategory && searchTerm.Equals(category, StringComparison.OrdinalIgnoreCase))
-        {
-            searchByCategory = true;
-            return "chip selected";
-        }
-        else
-        {
-            return "chip";
-        }
-    }
+	private string GetCategoryCssClass(string category)
+	{
+		if (searchByCategory && searchTerm.Equals(category, StringComparison.OrdinalIgnoreCase))
+		{
+			searchByCategory = true;
+			return "chip selected";
+		}
+		else
+		{
+			return "chip";
+		}
+	}
 
-    private async void ShowDetails(string articleId)
-    {
-        bool connected = await JSRuntime.InvokeAsync<bool>("readNetworkState");
+	private async void ShowDetails(string articleId)
+	{
+		bool connected = await JSRuntime.InvokeAsync<bool>("readNetworkState");
 
-        if (connected)
-        {
-            appState.SetPreviousPage($"search?q={SearchTerm}{(searchByCategory ? "&type=category" : string.Empty)}");
-            await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "search"));
-        }
-        else
-        {
-            await dialogService.DisplayAlert("Weekly Xamarin", "Network connection is required to view an article.", "OK");
-        }
-    }
+		if (connected)
+		{
+			appState.SetPreviousPage($"search?q={SearchTerm}{(searchByCategory ? "&type=category" : string.Empty)}");
+			await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "search"));
+		}
+		else
+		{
+			await dialogService.DisplayAlert("Weekly Xamarin", "Network connection is required to view an article.", "OK");
+		}
+	}
 
-    private async Task SearchCategory(string category)
-    {
-        searchByCategory = true;
-        SearchTerm = category;
+	private async Task SearchCategory(string category)
+	{
+		searchByCategory = true;
+		SearchTerm = category;
 
-        if (await ExecuteSearch())
-        {
-            StateHasChanged();
-        }
-    }
+		if (await ExecuteSearch())
+		{
+			StateHasChanged();
+		}
+	}
 
-    private async Task ShareArticle(string articleId)
-    {
-        var article = articles.FirstOrDefault(x => x.Id == articleId);
+	private async Task ShareArticle(string articleId)
+	{
+		var article = articles.FirstOrDefault(x => x.Id == articleId);
 
-        if (article != null)
-        {
-            var supported = await JSRuntime.InvokeAsync<bool>("webShareSupported");
+		if (article != null)
+		{
+			var supported = await JSRuntime.InvokeAsync<bool>("webShareSupported");
 
-            if (supported)
-            {
-                await JSRuntime.InvokeVoidAsync("shareArticle", article.Title, article.Url);
-            }
-            else
-            {
-                await shareService.ShareUri("Weekly Xamarin", article.Title, article.Url);
-            }
-        }
-    }
+			if (supported)
+			{
+				await JSRuntime.InvokeVoidAsync("shareArticle", article.Title, article.Url);
+			}
+			else
+			{
+				await shareService.ShareUri("Weekly Xamarin", article.Title, article.Url);
+			}
+		}
+	}
 
-    private async Task ToggleBookmark(string articleId)
-    {
-        var article = articles.FirstOrDefault(i => i.Id == articleId);
+	private async Task ToggleBookmark(string articleId)
+	{
+		var article = articles.FirstOrDefault(i => i.Id == articleId);
 
-        if (article != null)
-        {
-            if (article.IsSaved)
-            {
-                await dataStore.UnbookmarkArticle(article);
-            }
-            else
-            {
-                await dataStore.BookmarkArticle(article);
-            }
-        }
+		if (article != null)
+		{
+			if (article.IsSaved)
+			{
+				await dataStore.UnbookmarkArticle(article);
+			}
+			else
+			{
+				await dataStore.BookmarkArticle(article);
+			}
+		}
 
-        StateHasChanged();
-    }
+		StateHasChanged();
+	}
 }

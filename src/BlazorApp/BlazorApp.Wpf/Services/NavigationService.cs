@@ -2,7 +2,7 @@
 {
     public class NavigationService : INavigationService
     {
-        public Task GoBackAsync(bool modal = false)
+        public Task GoBackAsync()
         {
             throw new NotImplementedException();
         }
@@ -26,7 +26,7 @@
             }
         }
 
-        public async Task GoToAsync(string uri, Dictionary<string, object> parameters)
+        public async Task GoToAsync(string uri, IDictionary<string, object> parameters)
         {
             if (uri == Paths.Article && parameters.ContainsKey(ParameterNames.ArticleId)
                 && App.Routes[uri] is WebWindow window)

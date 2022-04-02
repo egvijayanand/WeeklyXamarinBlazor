@@ -5,24 +5,24 @@
 
 @if (article != null)
 {
-    <iframe class="responsive-iframe" src="@article.Url"></iframe>
+	<iframe class="responsive-iframe" src="@article.Url"></iframe>
 }
 
 @code {
-    private Article article;
+	private Article article;
 
-    [Parameter]
-    public string ArticleId { get; set; }
+	[Parameter]
+	public string ArticleId { get; set; }
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        appState.SetBackButtonState(true);
-    }
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		appState.SetBackButtonState(true);
+	}
 
-    protected override async Task OnParametersSetAsync()
-    {
-        await base.OnParametersSetAsync();
-        article = await dataStore.GetArticleAsync(Article.GetEditionId(ArticleId), ArticleId);
-    }
+	protected override async Task OnParametersSetAsync()
+	{
+		await base.OnParametersSetAsync();
+		article = await dataStore.GetArticleAsync(Article.GetEditionId(ArticleId), ArticleId);
+	}
 }

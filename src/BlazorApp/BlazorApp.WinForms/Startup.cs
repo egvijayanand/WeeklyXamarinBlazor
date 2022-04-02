@@ -4,7 +4,6 @@ using Blazored.LocalStorage;
 using Blazored.Modal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VijayAnand.MauiToolkit.Core;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;

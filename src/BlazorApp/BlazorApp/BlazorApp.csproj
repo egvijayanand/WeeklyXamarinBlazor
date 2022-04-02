@@ -8,7 +8,6 @@
 
 		<!-- .NET MAUI -->
 		<UseMaui>true</UseMaui>
-		<UseMauiEssentials>true</UseMauiEssentials>
 		<SingleProject>true</SingleProject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
@@ -23,8 +22,10 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.blazorapp</ApplicationId>
+		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">259912f4-609d-4d0a-a1dd-cb66a5b897de</ApplicationId>
 
 		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- Required for C# Hot Reload -->
@@ -42,29 +43,32 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<!--<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="6.0.101-preview.10.*" />-->
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.2" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.3" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.104" />
-		<PackageReference Include="VijayAnand.MauiToolkit" Version="1.0.0-pre1" />
+		<PackageReference Include="VijayAnand.MauiToolkit" Version="1.0.0-pre4" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.1" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.1" />
 	</ItemGroup>
 
 	<PropertyGroup>

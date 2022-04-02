@@ -55,7 +55,7 @@ namespace BlazorApp.Views
         {
             if (e.Result == WebNavigationResult.Success)
             {
-                Title = await (sender as WebView)?.EvaluateJavaScriptAsync("document.title");
+                ViewModel.Title = await (sender as WebView)?.EvaluateJavaScriptAsync("document.title");
             }
             else if (e.Result == WebNavigationResult.Failure)
             {

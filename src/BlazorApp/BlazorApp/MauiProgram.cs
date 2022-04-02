@@ -2,6 +2,7 @@
 using Blazored.LocalStorage;
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Maui.Essentials.Implementations;
 using VijayAnand.MauiToolkit;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
@@ -34,6 +35,7 @@ namespace BlazorApp
                        services.AddBlazoredLocalStorage();
 
                        services.AddSingleton<AppState>();
+                       services.AddSingleton<IShare, ShareImplementation>();
 
                        services.AddScoped<IDataStore, GitHubDataStore>();
                        services.AddHttpClient(Constants.DataStore.GitHub, client =>
@@ -47,13 +49,6 @@ namespace BlazorApp
                    });
 
             return builder.Build();
-        }
-
-        public static MauiAppBuilder ConfigureServices(this MauiAppBuilder builder,
-                                                       Action<IServiceCollection>? configureDelegate)
-        {
-            configureDelegate?.Invoke(builder.Services);
-            return builder;
         }
     }
 }
