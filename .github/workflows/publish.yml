@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .\src\BlazorApp
+        working-directory: ./src/BlazorApp
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -40,15 +40,15 @@ jobs:
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore .\BlazorApp.Wasm\BlazorApp.Wasm.csproj
+        run: dotnet restore ./BlazorApp.Wasm/BlazorApp.Wasm.csproj
 
       # Build the WASM Project in Release mode
       - name: Build the Project in Release mode
-        run: dotnet build .\BlazorApp.Wasm\BlazorApp.Wasm.csproj -c Release --no-restore
+        run: dotnet build ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release --no-restore
 
       # Publish the WASM Project in Release mode
       - name: Publish the WASM Project in Release mode
-        run: dotnet publish .\BlazorApp.Wasm\BlazorApp.Wasm.csproj -c Release -o blazorwasm --no-build
+        run: dotnet publish ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release -o blazorwasm --no-build
 
       # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
       - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
