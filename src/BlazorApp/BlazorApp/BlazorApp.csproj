@@ -13,9 +13,9 @@
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
 
 		<!-- Project Options -->
+		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>BlazorApp</RootNamespace>
-		<LangVersion>latest</LangVersion>
 
 		<!-- Display name -->
 		<ApplicationTitle>BlazorApp</ApplicationTitle>
@@ -59,10 +59,13 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre8" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview2" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.3" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.104" />
-		<PackageReference Include="VijayAnand.MauiToolkit" Version="1.0.0-pre4" />
+		<PackageReference Include="VijayAnand.FontAwesome" Version="2.1.1" />
+		<PackageReference Include="VijayAnand.MauiToolkit" Version="1.0.0-pre5" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
