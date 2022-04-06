@@ -50,6 +50,14 @@ jobs:
       - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
         run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' ./blazorwasm/wwwroot/index.html
 
+      # Copy index.html to 404.html to serve the same file when a file is not found
+      - name: Copy index.html to 404.html
+        run: cp blazorwasm/wwwroot/index.html blazorwasm/wwwroot/404.html
+
+      # Add .nojekyll file to tell GitHub Pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+      - name: Add .nojekyll file
+        run: touch blazorwasm/wwwroot/.nojekyll
+
       # Commit wwwroot to GitHub Pages
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.3.0
