@@ -42,13 +42,13 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ./BlazorApp.Wasm/BlazorApp.Wasm.csproj
 
+      # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
+      - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
+        run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' ./BlazorApp.Wasm/wwwroot/index.html
+
       # Publish the WASM Project in Release mode
       - name: Publish the WASM Project in Release mode
         run: dotnet publish ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release -o blazorwasm
-
-      # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
-      - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
-        run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' ./blazorwasm/wwwroot/index.html
 
       # Copy index.html to 404.html to serve the same file when a file is not found
       - name: Copy index.html to 404.html
