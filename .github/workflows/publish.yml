@@ -48,7 +48,7 @@ jobs:
 
       # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
       - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
-        run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' blazorwasm/wwwroot/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' ./blazorwasm/wwwroot/index.html
 
       # Commit wwwroot to GitHub Pages
       - name: Commit wwwroot to GitHub Pages
@@ -56,4 +56,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
-          folder: blazorwasm/wwwroot # The folder the action should deploy.
+          folder: ./src/BlazorApp/blazorwasm/wwwroot # The folder the action should deploy.
