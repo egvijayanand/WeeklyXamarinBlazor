@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Publish Weekly Xamarin Blazor
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allows you to run this workflow manually from the Actions tab
+env:
+  DOTNET_VERSION: '6.0.x'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "publish-weekly-xamarin-blazor"
+  publish-weekly-xamarin-blazor:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .\src\BlazorApp
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Setup .NET 6 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          # Optional SDK version to use. If not provided, will install global.json version when available. Examples: 2.2.104, 3.1, 3.1.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          # Whether prerelease versions should be matched with non-exact versions (for example 5.0.0-preview.6 being matched by 5, 5.0, 5.x or 5.0.x). Defaults to false if not provided.
+
+      # Install WebAssembly workload
+      - name: Install WebAssembly workload
+        run: dotnet workload install wasm-tools
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore .\BlazorApp.Wasm\BlazorApp.Wasm.csproj
+
+      # Build the WASM Project in Release mode
+      - name: Build the Project in Release mode
+        run: dotnet build .\BlazorApp.Wasm\BlazorApp.Wasm.csproj -c Release --no-restore
+
+      # Publish the WASM Project in Release mode
+      - name: Publish the WASM Project in Release mode
+        run: dotnet publish .\BlazorApp.Wasm\BlazorApp.Wasm.csproj -c Release -o blazorwasm --no-build
+
+      # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
+      - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
+        run: sed -i 's/<base href="\/" \/>/<base href="\/WeeklyXamarinBlazor\/" \/>/g' blazorwasm/wwwroot/index.html
+
+      # Commit wwwroot to GitHub Pages
+      - name: Commit wwwroot to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages # The branch the action should deploy to.
+          folder: blazorwasm/wwwroot # The folder the action should deploy.
