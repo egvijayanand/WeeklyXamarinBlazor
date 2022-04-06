@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<RunAOTCompilation>true</RunAOTCompilation>
+		<EmccTotalMemory>16777216</EmccTotalMemory>
 	</PropertyGroup>
 
 	<ItemGroup>
