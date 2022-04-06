@@ -77,7 +77,7 @@
       "url": "images\/splash.png"
     },
     {
-      "hash": "sha256-v\/RH3xJX3uXncaTv\/9CGDwNgyQuL2XF1UKY5VBXJ2Iw=",
+      "hash": "sha256-K+6k7bWsvBz7g9GJbIlY6bIG4C4BM2BUo8TIF8s63IA=",
       "url": "index.html"
     },
     {
@@ -233,7 +233,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-a4yv0g0iEJm\/w\/C4nWlnNSbVt1fO6IIlesVd2mg4AkU=",
+      "hash": "sha256-mtQ8HoW5mtGOOw2NkWTypVxj61fCaimgeDOzmAmF5oc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -477,11 +477,11 @@
       "url": "_framework\/WeeklyXamarin.Core.dll"
     },
     {
-      "hash": "sha256-jPJuY8u79Tn6BrGKUUX3mmBOxG4jbitXI3qaK9XYXnE=",
+      "hash": "sha256-IcqcHmJ\/C1v5URlOet7Nwl8eq+s1LOHaFfU7STIhxNM=",
       "url": "_framework\/dotnet.6.0.3.3whcy4itad.js"
     },
     {
-      "hash": "sha256-prFmuutxjWNpdRglMcBIsPSDBYuriHSTXCw3mgQYL0U=",
+      "hash": "sha256-qiUQFheDqGufl29pk6NuGYiELNu\/LXoznHqyU81YoIc=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -493,5 +493,5 @@
       "url": "_content\/Blazored.Modal\/blazored.modal.js"
     }
   ],
-  "version": "\/dZ\/uDOo"
+  "version": "cMVahd4x"
 };
