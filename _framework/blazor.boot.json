@@ -7,10 +7,10 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BlazorApp.Wasm.dll": "sha256-pxg80r60wIWTwVB3Cfw4YfEqXY2URgGgN8ePOpnQSNA=",
+      "BlazorApp.Wasm.dll": "sha256-WQ\/AUbEreX71TVHpLgzjc8tSq7K+nlLz6TR9Y5qukrc=",
       "Blazored.LocalStorage.dll": "sha256-6RRoYeDP3d0xabXmcCMF66wXeJlXVPem28Trs8sQiis=",
       "Blazored.Modal.dll": "sha256-yoXX75RsqCVb+q2v0ZS7Hd6lW+OeSPHHPyJBk\/AyYMg=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-GC2ixnfLPYBABiSUKYxo+qW9J\/EopTkJTQdXxnI2WvU=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-FMA8Fy2Z5BcI3obhhUCalLZx01p8\/t0kaBLCpNMcNIc=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-+YVhj3UiPeMRY+BKuQpKCuDNmM+BP1+TgnXsC+ou75o=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-CNzt\/UsiRCxcUKpUsCD00Sg068gb3oCJxEilCykg0rI=",
       "Microsoft.AspNetCore.WebUtilities.dll": "sha256-D5akJeBd7NNITuzAXxlX7zl2jfsc4uTKyeEKwwNhqoo=",
@@ -65,8 +65,8 @@
       "System.Text.Json.dll": "sha256-QM\/BedG5A+nsNyBvwtsybNqfOcyD5MoqEO2GBrUxg7k=",
       "System.Text.RegularExpressions.dll": "sha256-ZEIobTNJuTYQgMfgtAGcrbFHo+N80DQdhMQ0DgXNCdk=",
       "System.Threading.dll": "sha256-B1OibMfJMaGZNKmwii1XIqMjE96YzKoUeGN12hu5\/OU=",
-      "VijayAnand.MauiToolkit.Core.dll": "sha256-PLDjRmVWfXV6a0NfMUl9Wv\/aGMxqBz7z4Er\/XkBuJDU=",
-      "WeeklyXamarin.Core.dll": "sha256-R4D0Li+5MyhgMntiJMSQLpnsRIq24xwT7LU7\/\/iN1w0="
+      "VijayAnand.MauiToolkit.Core.dll": "sha256-dsUVxPh7QWiWl1qGN2TmP6nxswFfC0x4d7TMrs8WXX4=",
+      "WeeklyXamarin.Core.dll": "sha256-N40qT679jhzDsXGMeZ5YodgGGkd4iJPeg4fUqGeMMZo="
     },
     "extensions": null,
     "lazyAssembly": null,

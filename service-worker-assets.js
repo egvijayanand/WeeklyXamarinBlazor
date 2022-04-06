@@ -77,8 +77,12 @@
       "url": "images\/splash.png"
     },
     {
-      "hash": "sha256-K95gp8m2U8AIay6VQ4fEwT8iHZe31oEul2rXBT0l328=",
+      "hash": "sha256-v\/RH3xJX3uXncaTv\/9CGDwNgyQuL2XF1UKY5VBXJ2Iw=",
       "url": "index.html"
+    },
+    {
+      "hash": "sha256-FsyBr0yXvuzndRSiqD4m0n7AjD6L0M21UGNLfxz9FW0=",
+      "url": "manifest.json"
     },
     {
       "hash": "sha256-qyes+FDTRLbSFEeN7OZMrkrFHQ+c7mQLuv4qJZbYO+w=",
@@ -229,11 +233,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-8WGZDf\/pc0dFKzDdjabFrT1a21YJVPxUCRadFWUGLKc=",
+      "hash": "sha256-a4yv0g0iEJm\/w\/C4nWlnNSbVt1fO6IIlesVd2mg4AkU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-pxg80r60wIWTwVB3Cfw4YfEqXY2URgGgN8ePOpnQSNA=",
+      "hash": "sha256-WQ\/AUbEreX71TVHpLgzjc8tSq7K+nlLz6TR9Y5qukrc=",
       "url": "_framework\/BlazorApp.Wasm.dll"
     },
     {
@@ -245,7 +249,7 @@
       "url": "_framework\/Blazored.Modal.dll"
     },
     {
-      "hash": "sha256-GC2ixnfLPYBABiSUKYxo+qW9J\/EopTkJTQdXxnI2WvU=",
+      "hash": "sha256-FMA8Fy2Z5BcI3obhhUCalLZx01p8\/t0kaBLCpNMcNIc=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -465,11 +469,11 @@
       "url": "_framework\/System.Threading.dll"
     },
     {
-      "hash": "sha256-PLDjRmVWfXV6a0NfMUl9Wv\/aGMxqBz7z4Er\/XkBuJDU=",
+      "hash": "sha256-dsUVxPh7QWiWl1qGN2TmP6nxswFfC0x4d7TMrs8WXX4=",
       "url": "_framework\/VijayAnand.MauiToolkit.Core.dll"
     },
     {
-      "hash": "sha256-R4D0Li+5MyhgMntiJMSQLpnsRIq24xwT7LU7\/\/iN1w0=",
+      "hash": "sha256-N40qT679jhzDsXGMeZ5YodgGGkd4iJPeg4fUqGeMMZo=",
       "url": "_framework\/WeeklyXamarin.Core.dll"
     },
     {
@@ -489,5 +493,5 @@
       "url": "_content\/Blazored.Modal\/blazored.modal.js"
     }
   ],
-  "version": "xIUOf2bC"
+  "version": "\/dZ\/uDOo"
 };
