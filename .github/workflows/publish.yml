@@ -42,13 +42,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ./BlazorApp.Wasm/BlazorApp.Wasm.csproj
 
-      # Build the WASM Project in Release mode
-      - name: Build the Project in Release mode
-        run: dotnet build ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release --no-restore
-
       # Publish the WASM Project in Release mode
       - name: Publish the WASM Project in Release mode
-        run: dotnet publish ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release -o blazorwasm --no-build
+        run: dotnet publish ./BlazorApp.Wasm/BlazorApp.Wasm.csproj -c Release -o blazorwasm
 
       # Updates the base-tag in index.html from '/' to 'WeeklyXamarinBlazor' to match GitHub Pages repository subdirectory
       - name: Updates the base-tag in index.html from / to WeeklyXamarinBlazor
