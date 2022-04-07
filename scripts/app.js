@@ -22,6 +22,15 @@ window.positionAt = async (element) => {
     }
 };
 
+window.scrollToFragment = async (elementId) => {
+    var element = document.getElementById(elementId);
+
+    if (element) {
+        //await element.scrollIntoView({ behavior: "smooth" });
+        await window.scrollTo({ left: 0, top: element.offsetTop - 60, behavior: "smooth" });
+    }
+};
+
 window.readNetworkState = () => window.navigator.onLine;
 
 window.showAlert = (title, message, cancel) => {
