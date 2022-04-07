@@ -11,7 +11,7 @@
 <div class="h20"></div>
 
 <div class="form-floating mb-3">
-	<input type="text" class="form-control" id="searchText" @ref="txtSearch" @bind="SearchTerm" @bind:event="oninput"
+	<input type="search" class="form-control" id="searchText" @ref="txtSearch" @bind="SearchTerm" @bind:event="oninput"
 		   @onkeydown="OnKeyDown" @onkeyup="OnKeyUp" placeholder="Enter your search term here" />
 	<label for="searchText">Search term</label>
 </div>

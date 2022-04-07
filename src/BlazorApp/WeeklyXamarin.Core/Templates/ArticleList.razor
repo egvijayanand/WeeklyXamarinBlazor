@@ -1,43 +1,43 @@
 ﻿@foreach (var item in Items)
 {
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 mt15i">
-        <div class="card shadow bg-body rounded">
-            <div class="card-body clickable" @onclick="@(() => OnItemClick.InvokeAsync(item.Id))">
-                <h5 class="card-title">@item.Title</h5>
-                <h6 class="card-subtitle text-muted">@item.Author</h6>
-                <p class="card-text">@item.Description</p>
-            </div>
-            <div class="card-footer text-muted">
-                <div style="float: left;">
-                    <span class="category clickable" @onclick="() => OnCategoryClick.InvokeAsync(item.Category)">@item.Category</span>
-                </div>
-                <div style="float: right;">
-                    <span class="mh10 clickable"><i class="fas fa-share-alt" @onclick="() => OnShareClick.InvokeAsync(item.Id)"></i></span>
-                    <span class="mh10 clickable"><i class="@GetBookmarkCssClass(item.IsSaved)" @onclick="() => OnBookmarkClick.InvokeAsync(item.Id)"></i></span>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div id="@item.Id.Substring(item.Id.IndexOf('-') + 1)" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 mt15i">
+		<div class="card shadow bg-body rounded">
+			<div class="card-body clickable" @onclick="@(() => OnItemClick.InvokeAsync(item.Id))">
+				<h5 class="card-title">@item.Title</h5>
+				<h6 class="card-subtitle text-muted">@item.Author</h6>
+				<p class="card-text">@item.Description</p>
+			</div>
+			<div class="card-footer text-muted">
+				<div style="float: left;">
+					<span class="category clickable" @onclick="() => OnCategoryClick.InvokeAsync(item.Category)">@item.Category</span>
+				</div>
+				<div style="float: right;">
+					<span class="mh10 clickable"><i class="fas fa-share-alt" @onclick="() => OnShareClick.InvokeAsync(item.Id)"></i></span>
+					<span class="mh10 clickable"><i class="@GetBookmarkCssClass(item.IsSaved)" @onclick="() => OnBookmarkClick.InvokeAsync(item.Id)"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
 }
 
 @code {
-    [Parameter]
-    public IReadOnlyList<Article> Items { get; set; }
+	[Parameter]
+	public IReadOnlyList<Article> Items { get; set; }
 
-    [Parameter]
-    public EventCallback<string> OnItemClick { get; set; }
+	[Parameter]
+	public EventCallback<string> OnItemClick { get; set; }
 
-    [Parameter]
-    public EventCallback<string> OnCategoryClick { get; set; }
+	[Parameter]
+	public EventCallback<string> OnCategoryClick { get; set; }
 
-    [Parameter]
-    public EventCallback<string> OnShareClick { get; set; }
+	[Parameter]
+	public EventCallback<string> OnShareClick { get; set; }
 
-    [Parameter]
-    public EventCallback<string> OnBookmarkClick { get; set; }
+	[Parameter]
+	public EventCallback<string> OnBookmarkClick { get; set; }
 
-    private string GetBookmarkCssClass(bool saved)
-    {
-        return saved ? "fas fa-bookmark" : "far fa-bookmark";
-    }
+	private string GetBookmarkCssClass(bool saved)
+	{
+		return saved ? "fas fa-bookmark" : "far fa-bookmark";
+	}
 }

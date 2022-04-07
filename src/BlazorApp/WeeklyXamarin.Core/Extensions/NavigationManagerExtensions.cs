@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.JSInterop;
 
 namespace WeeklyXamarin.Core.Extensions
 {
@@ -32,6 +33,12 @@ namespace WeeklyXamarin.Core.Extensions
 
             value = default;
             return false;
+        }
+
+        public static ValueTask NavigateToFragmentAsync(this NavigationManager navigator, IJSRuntime jSRuntime)
+        {
+            var uri = navigator.ToAbsoluteUri(navigator.Uri);
+            return uri.Fragment.Length == 0 ? default : jSRuntime.InvokeVoidAsync("scrollToFragment", uri.Fragment[1..]);
         }
     }
 }
