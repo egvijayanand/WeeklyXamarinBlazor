@@ -45,6 +45,17 @@
 		appState.SetPageTitle(Paths.Editions);
 		appState.SetPreviousPage("editions");
 		this.NetworkStateChanged += Refresh;
+		navigator.LocationChanged += OnLocationChanged;
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+
+		if (firstRender)
+		{
+			await navigator.NavigateToFragmentAsync(JSRuntime);
+		}
 	}
 
 	private async void Refresh(bool connected)
@@ -121,8 +132,14 @@
 		StateHasChanged();
 	}
 
+	private async void OnLocationChanged(object sender, LocationChangedEventArgs e)
+	{
+		await navigator.NavigateToFragmentAsync(JSRuntime);
+	}
+
 	public void Dispose()
 	{
 		this.NetworkStateChanged -= Refresh;
+		navigator.LocationChanged -= OnLocationChanged;
 	}
 }
