@@ -22,12 +22,11 @@
       "url": "https://apps.apple.com/us/app/weekly-xamarin/id1563006723"
     }
   ],
-  "scope": "/",
   "shortcuts": [
     {
       "name": "Bookmarks",
       "short_name": "Bookmarks",
-      "url": "/bookmarks",
+      "url": "./bookmarks",
       "description": "Bookmarked articles",
       "icons": [
         {
@@ -359,27 +358,27 @@
       "sizes": "256x256"
     },
     {
-      "src": "images/android/images/android-launchericon-512-512.png",
+      "src": "images/android/android-launchericon-512-512.png",
       "sizes": "512x512"
     },
     {
-      "src": "images/android/images/android-launchericon-192-192.png",
+      "src": "images/android/android-launchericon-192-192.png",
       "sizes": "192x192"
     },
     {
-      "src": "images/android/images/android-launchericon-144-144.png",
+      "src": "images/android/android-launchericon-144-144.png",
       "sizes": "144x144"
     },
     {
-      "src": "images/android/images/android-launchericon-96-96.png",
+      "src": "images/android/android-launchericon-96-96.png",
       "sizes": "96x96"
     },
     {
-      "src": "images/android/images/android-launchericon-72-72.png",
+      "src": "images/android/android-launchericon-72-72.png",
       "sizes": "72x72"
     },
     {
-      "src": "images/android/images/android-launchericon-48-48.png",
+      "src": "images/android/android-launchericon-48-48.png",
       "sizes": "48x48"
     },
     {
