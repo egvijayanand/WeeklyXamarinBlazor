@@ -1,5 +1,7 @@
 ## WeeklyXamarinBlazor
 
+Join me on [**Developer Thoughts**](https://egvijayanand.in/), an exclusive blog for .NET MAUI and Blazor, for articles on working with them.
+
 Weekly Xamarin implemented with `BlazorWebView` component
 
 * .NET MAUI targeting Android, iOS, macOS (via Mac Catalyst) and Windows via WinUI 3
