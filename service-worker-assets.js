@@ -529,7 +529,7 @@
       "url": "index.html"
     },
     {
-      "hash": "sha256-fcw\/psNVm5kh0IMSkRSMF4P1oP\/fQrR5UPM\/XN8ybqY=",
+      "hash": "sha256-CPo7DIiV2mSM8BIRBYdgYxcBx+P1IiV4HAJLfyCaGmU=",
       "url": "manifest.json"
     },
     {
@@ -941,5 +941,5 @@
       "url": "_content\/Blazored.Modal\/blazored.modal.js"
     }
   ],
-  "version": "e91oaAbZ"
+  "version": "G4yhSEPI"
 };
