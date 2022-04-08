@@ -1,4 +1,4 @@
-﻿@page "/edition/{editionId}"
+﻿@page "/edition/{editionId}/{articleId?}"
 @inherits NetworkAwareComponent
 @inject AppState appState
 @inject IDataStore dataStore
@@ -38,6 +38,9 @@
 	[Parameter]
 	public string EditionId { get; set; }
 
+	[Parameter]
+	public string ArticleId { get; set; }
+
 	protected override void OnInitialized()
 	{
 		base.OnInitialized();
@@ -55,6 +58,11 @@
 		if (firstRender)
 		{
 			await navigator.NavigateToFragmentAsync(JSRuntime);
+		}
+
+		if (int.TryParse(ArticleId, out var articleId) && articleId <= Edition.Articles.Count)
+		{
+			await JSRuntime.InvokeVoidAsync("scrollToFragment", ArticleId);
 		}
 	}
 

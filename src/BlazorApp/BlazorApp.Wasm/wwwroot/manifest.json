@@ -1,11 +1,12 @@
 {
+  "dir": "ltr",
   "name": "Weekly Xamarin Blazor",
   "description": "Weekly Xamarin newsletter app developed with Blazor.",
   "short_name": "Weekly Xamarin Blazor",
   "start_url": "./?ref=pwa",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3700b3",
+  "background_color": "transparent",
+  "lang": "en",
   "url_handlers": [
     {
       "origin": "https://egvijayanand.github.io"
