@@ -201,7 +201,7 @@
       "url": "images\/Loading.gif"
     },
     {
-      "hash": "sha256-ZqA71cx2GlXy4ICXT1gKonkfUWNvQef8hOYZkdvvoLw=",
+      "hash": "sha256-3BAI0ZUUhiPPIn9zLL4nahdXRPwT\/pidQ\/+l3ozCEHk=",
       "url": "images\/splash.png"
     },
     {
@@ -525,7 +525,7 @@
       "url": "images\/windows11\/Wide310x150Logo.scale-400.png"
     },
     {
-      "hash": "sha256-cZapmZT46HZrwHP4nJlaFGBhoRTeUFsyuPB7Ty1zsBc=",
+      "hash": "sha256-ea8IxzcP4m9GimqOcd6QLhvx8FPQU\/KNtEbT1rqFrT8=",
       "url": "index.html"
     },
     {
@@ -941,5 +941,5 @@
       "url": "_content\/Blazored.Modal\/blazored.modal.js"
     }
   ],
-  "version": "pVPylqUi"
+  "version": "NYdvBOjn"
 };
