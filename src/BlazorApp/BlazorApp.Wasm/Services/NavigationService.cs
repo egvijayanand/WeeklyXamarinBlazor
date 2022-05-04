@@ -38,11 +38,11 @@ namespace BlazorApp.Wasm.Services
             if (uri == Constants.Navigation.Paths.Article)
             {
                 var article = await dataStore.GetArticleAsync(Article.GetEditionId(value), value);
-                await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
             }
             else if (uri == Constants.Navigation.Paths.Web)
             {
-                await jsRuntime.InvokeAsync<object>("window.open", value, "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", value, "_blank");
             }
         }
 
@@ -51,11 +51,11 @@ namespace BlazorApp.Wasm.Services
             if (uri == Constants.Navigation.Paths.Article)
             {
                 var article = await dataStore.GetArticleAsync(Article.GetEditionId(parameters[ArticleId].ToString()), parameters[Constants.Navigation.ParameterNames.ArticleId].ToString());
-                await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
             }
             else if (uri == Constants.Navigation.Paths.Web)
             {
-                await jsRuntime.InvokeAsync<object>("window.open", parameters[WebLink], "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", parameters[WebLink], "_blank");
             }
         }
     }
