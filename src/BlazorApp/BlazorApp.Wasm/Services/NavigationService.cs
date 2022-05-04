@@ -5,18 +5,21 @@ using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;
 
+using static WeeklyXamarin.Core.Helpers.Constants.Navigation.ParameterNames;
+
 namespace BlazorApp.Wasm.Services
 {
     public class NavigationService : INavigationService
     {
         private readonly IDataStore dataStore;
-        private readonly IJSRuntime jSRuntime;
+        //private readonly IJSInProcessRuntime jsRuntime;
+        private readonly IJSRuntime jsRuntime;
         private readonly NavigationManager navigator;
 
-        public NavigationService(NavigationManager navigator, IJSRuntime jSRuntime, IDataStore dataStore)
+        public NavigationService(NavigationManager navigator, IJSRuntime jsRuntime, IDataStore dataStore)
         {
             this.navigator = navigator;
-            this.jSRuntime = jSRuntime;
+            this.jsRuntime = jsRuntime;
             this.dataStore = dataStore;
         }
 
@@ -35,11 +38,11 @@ namespace BlazorApp.Wasm.Services
             if (uri == Constants.Navigation.Paths.Article)
             {
                 var article = await dataStore.GetArticleAsync(Article.GetEditionId(value), value);
-                _ = await jSRuntime.InvokeAsync<object>("open", article.Url, "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
             }
             else if (uri == Constants.Navigation.Paths.Web)
             {
-                _ = await jSRuntime.InvokeAsync<object>("open", value, "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", value, "_blank");
             }
         }
 
@@ -47,12 +50,12 @@ namespace BlazorApp.Wasm.Services
         {
             if (uri == Constants.Navigation.Paths.Article)
             {
-                var article = await dataStore.GetArticleAsync(Article.GetEditionId(parameters[Constants.Navigation.ParameterNames.ArticleId].ToString()), parameters[Constants.Navigation.ParameterNames.ArticleId].ToString());
-                _ = await jSRuntime.InvokeAsync<object>("open", article.Url, "_blank");
+                var article = await dataStore.GetArticleAsync(Article.GetEditionId(parameters[ArticleId].ToString()), parameters[Constants.Navigation.ParameterNames.ArticleId].ToString());
+                _ = await jsRuntime.InvokeAsync<object>("window.open", article.Url, "_blank");
             }
             else if (uri == Constants.Navigation.Paths.Web)
             {
-                _ = await jSRuntime.InvokeAsync<object>("open", parameters[Constants.Navigation.ParameterNames.WebLink], "_blank");
+                _ = await jsRuntime.InvokeAsync<object>("window.open", parameters[WebLink], "_blank");
             }
         }
     }

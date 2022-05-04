@@ -53,3 +53,14 @@ window.addEventListener("load", (event) => {
             .then((result) => console.log(result));
     }
 });
+
+window.getTheme = () => {
+    const darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    if (darkTheme.matches) {
+        console.log("Dark theme.");
+        return "Dark";
+    } else {
+        console.log("Light theme.");
+        return "Light";
+    }
+}

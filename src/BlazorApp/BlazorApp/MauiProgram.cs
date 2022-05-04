@@ -1,14 +1,9 @@
-﻿using BlazorApp.ViewModels;
-using Blazored.LocalStorage;
+﻿using Blazored.LocalStorage;
 using Blazored.Modal;
-using Microsoft.AspNetCore.Components.WebView.Maui;
-using Microsoft.Maui.Essentials.Implementations;
+using CommunityToolkit.Maui;
 using VijayAnand.MauiToolkit;
 using WeeklyXamarin.Core;
-using WeeklyXamarin.Core.Helpers;
 using WeeklyXamarin.Core.Services;
-
-#nullable enable
 
 namespace BlazorApp
 {
@@ -18,9 +13,11 @@ namespace BlazorApp
         {
             var builder = MauiApp.CreateBuilder();
 
-            builder.RegisterBlazorMauiWebView()
-                   .UseMauiApp<App>()
-                   .UseVijayAnandMauiToolkit()
+            //var components = ServiceRegistrations.All & ~ServiceRegistrations.Navigation;
+
+            builder.UseMauiApp<App>()
+                   .UseMauiCommunityToolkit()
+                   .UseVijayAnandMauiToolkit(/*components*/)
                    .ConfigureFonts(fonts =>
                    {
                        fonts.AddFont("OpenSans-Regular.ttf", "OSR");
@@ -30,22 +27,32 @@ namespace BlazorApp
                    })
                    .ConfigureServices(services =>
                    {
-                       services.AddBlazorWebView();
+                       services.AddMauiBlazorWebView();
+#if DEBUG
+                       services.AddBlazorWebViewDeveloperTools();
+#endif
                        services.AddBlazoredModal();
                        services.AddBlazoredLocalStorage();
 
                        services.AddSingleton<AppState>();
-                       services.AddSingleton<IShare, ShareImplementation>();
+                       services.AddSingleton<MainViewModel>();
+                       services.AddSingleton<MainPage>();
+
+                       services.AddSingleton(AppInfo.Current);
+                       services.AddSingleton(Browser.Default);
+                       //services.AddSingleton<INavigationService, BrowserNavigationService>();
 
                        services.AddScoped<IDataStore, GitHubDataStore>();
-                       services.AddHttpClient(Constants.DataStore.GitHub, client =>
+                       services.AddHttpClient(DataStore.GitHub, client =>
                        {
                            client.BaseAddress = new Uri("https://raw.githubusercontent.com/weeklyxamarin/WeeklyXamarin.content/master/content/");
                        });
 
                        services.AddTransient<ArticleViewModel>();
-                       services.AddTransient<MainViewModel>();
                        services.AddTransient<WebViewModel>();
+
+                       services.AddTransient<AppThemeViewModel>();
+                       services.AddTransient<AppThemePopup>();
                    });
 
             return builder.Build();

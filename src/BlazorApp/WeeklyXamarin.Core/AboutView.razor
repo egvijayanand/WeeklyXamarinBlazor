@@ -30,10 +30,10 @@
 	</div>
 	@*<div class="row">
 		<input type="text" @bind="key" @onkeydown="OnKeyDown" @bind:event="oninput" />
-	</div>
-	<div class="row mt15i">
+		</div>
+		<div class="row mt15i">
 		<input type="button" value="Remove" @onclick="OnRemove" />
-	</div>*@
+		</div>*@
 </div>
 
 @code {
@@ -77,21 +77,21 @@
 				if (await localStorage.ContainKeyAsync(key)
 				/*&& await jsRuntime.InvokeAsync<bool>("confirm", "Are you sure?")*/)
 				{
-					if (await dialogService.DisplayAlert(Constants.AppTitle, "Are you sure?", "Yes", "No"))
+					if (await dialogService.DisplayAlertAsync(Constants.AppTitle, "Are you sure?", "Yes", "No"))
 					{
 						await localStorage.RemoveItemAsync(key);
 						//await jsRuntime.InvokeVoidAsync("alert", $"Item with key '{key}' has been removed.");
-						await dialogService.DisplayAlert(Constants.AppTitle, $"Item with key '{key}' has been removed.", "OK");
+						await dialogService.DisplayAlertAsync(Constants.AppTitle, $"Item with key '{key}' has been removed.", "OK");
 					}
 				}
 				else
 				{
-					await dialogService.DisplayAlert(Constants.AppTitle, "Entered item key not found.", "OK");
+					await dialogService.DisplayAlertAsync(Constants.AppTitle, "Entered item key not found.", "OK");
 				}
 			}
 			else
 			{
-				await dialogService.DisplayAlert(Constants.AppTitle, "Entered item key is invalid.", "OK");
+				await dialogService.DisplayAlertAsync(Constants.AppTitle, "Entered item key is invalid.", "OK");
 			}
 		}
 	}

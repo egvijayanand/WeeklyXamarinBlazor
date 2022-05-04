@@ -5,18 +5,18 @@ namespace BlazorApp.Wpf.Services
 {
     public class DialogService : IDialogService
     {
-        public Task<string> DisplayActionSheet(string title, string cancel, string destruction, params string[] buttons)
+        public Task<string> DisplayActionSheetAsync(string title, string cancel, string destruction, params string[] buttons)
         {
             throw new NotImplementedException();
         }
 
-        public Task DisplayAlert(string title, string message, string cancel)
+        public Task DisplayAlertAsync(string title, string message, string cancel)
         {
             _ = MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
             return Task.FromResult(true);
         }
 
-        public Task<bool> DisplayAlert(string title, string message, string accept, string cancel)
+        public Task<bool> DisplayAlertAsync(string title, string message, string accept, string cancel)
         {
             var result = MessageBox.Show(message, title, MessageBoxButton.OKCancel, MessageBoxImage.Information);
             return Task.FromResult(result == MessageBoxResult.OK);

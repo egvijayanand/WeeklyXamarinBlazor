@@ -44,7 +44,7 @@
 		}
 		else
 		{
-			await dialogService.DisplayAlert(Constants.AppTitle, "Network connection is required to view an article.", "OK");
+			await dialogService.DisplayAlertAsync(Constants.AppTitle, "Network connection is required to view an article.", "OK");
 		}
 	}
 
@@ -67,7 +67,7 @@
 			}
 			else
 			{
-				await shareService.ShareUri(Constants.AppTitle, article.Title, article.Url);
+				await shareService.ShareUriAsync(Constants.AppTitle, article.Title, article.Url);
 			}
 		}
 	}

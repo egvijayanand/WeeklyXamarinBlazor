@@ -52,6 +52,16 @@ span.category {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.btn-link {
+    color: #0077cc;
+}
+
+@media (prefers-color-scheme: dark) {
+    a, .btn-link {
+        color: #cc5500;
+    }
+}
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -91,7 +101,7 @@ html {
 }
 
 body {
-    /* Margin bottom by footer height */
+    /* Margin bottom for footer height */
     margin-bottom: 60px;
 }
 

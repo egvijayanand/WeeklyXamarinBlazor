@@ -1,17 +1,15 @@
-﻿using Microsoft.Maui.Essentials;
-
-namespace BlazorApp.Wpf.Services
+﻿namespace BlazorApp.Wpf.Services
 {
     public class ShareService : IShareService
     {
-        public async Task ShareText(string title, string text)
+        public Task ShareTextAsync(string title, string text)
         {
-            await Share.RequestAsync(text, title);
+            throw new NotImplementedException();
         }
 
-        public async Task ShareUri(string title, string text, string url)
+        public Task ShareUriAsync(string title, string text, string url)
         {
-            await Share.RequestAsync(new ShareTextRequest(text, title) { Uri = url });
+            throw new NotImplementedException();
         }
     }
 }

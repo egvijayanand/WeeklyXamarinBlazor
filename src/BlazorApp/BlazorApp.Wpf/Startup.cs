@@ -25,7 +25,10 @@ namespace BlazorApp.Wpf
 
         private static void WireupServices(HostBuilderContext context, IServiceCollection services)
         {
-            services.AddBlazorWebView();
+            services.AddWpfBlazorWebView();
+#if DEBUG
+            services.AddBlazorWebViewDeveloperTools();
+#endif
             services.AddBlazoredModal();
             services.AddBlazoredLocalStorage();
 

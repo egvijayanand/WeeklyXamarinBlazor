@@ -1,6 +1,4 @@
-﻿using WeeklyXamarin.Core.Helpers;
-
-namespace BlazorApp.Views
+﻿namespace BlazorApp.Views
 {
     public partial class ArticlePage : MauiPage, IQueryAttributable
     {
@@ -11,7 +9,7 @@ namespace BlazorApp.Views
 
         async void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            if (query.ContainsKey(Constants.Navigation.ParameterNames.ArticleId))
+            if (ViewModel is not null && query.ContainsKey(ArticleId))
             {
                 await ViewModel.InitializeAsync(query);
             }

@@ -73,7 +73,7 @@
 
 		if (Edition is null)
 		{
-			await dialogService.DisplayAlert(Constants.AppTitle, "Network connection is required to view the details.", "OK");
+			await dialogService.DisplayAlertAsync(Constants.AppTitle, "Network connection is required to view the details.", "OK");
 			navigator.NavigateTo(appState.PreviousPage);
 		}
 		else
@@ -93,7 +93,7 @@
 		}
 		else
 		{
-			await dialogService.DisplayAlert(Constants.AppTitle, "Network connection is required to view an article.", "OK");
+			await dialogService.DisplayAlertAsync(Constants.AppTitle, "Network connection is required to view an article.", "OK");
 		}
 	}
 
@@ -116,7 +116,7 @@
 			}
 			else
 			{
-				await shareService.ShareUri(Constants.AppTitle, article.Title, article.Url);
+				await shareService.ShareUriAsync(Constants.AppTitle, article.Title, article.Url);
 			}
 		}
 	}

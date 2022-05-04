@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NavigationPage
+    x:Class="BlazorApp.AppNavPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fas="clr-namespace:FontAwesome.Solid;assembly=VijayAnand.FontAwesome"
+    xmlns:local="clr-namespace:BlazorApp">
+    <!--<NavigationPage.ToolbarItems>
+        <ToolbarItem
+            Clicked="OnThemePopupTapped"
+            IconImageSource="{FontImage Glyph={x:Static fas:IconFont.Gear},
+                                        Size=30,
+                                        FontFamily=FAS,
+                                        Color={StaticResource PrimaryTextColor}}"
+            Order="Primary"
+            Priority="0"
+            Text="Theme" />
+    </NavigationPage.ToolbarItems>-->
+    <NavigationPage.TitleView>
+        <Grid ColumnDefinitions="*,Auto">
+            <Label
+                Grid.Column="0"
+                FontFamily="{StaticResource AppFont}"
+                FontSize="Title"
+                HorizontalOptions="Start"
+                Text="Weekly Xamarin"
+                TextColor="{StaticResource PrimaryTextColor}"
+                VerticalOptions="Center" />
+            <Label
+                Grid.Column="1"
+                Padding="{StaticResource TitlePadding}"
+                FontFamily="FAS"
+                FontSize="20"
+                HorizontalOptions="End"
+                Text="{x:Static fas:IconFont.Gear}"
+                TextColor="{StaticResource PrimaryTextColor}"
+                VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnThemePopupTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </NavigationPage.TitleView>
+</NavigationPage>

@@ -1,25 +1,52 @@
-﻿@inject AppState appState
+﻿@*@inject IAppInfo appInfo*@
+@inject AppState appState
+@inject IJSRuntime jsRuntime
 @implements IDisposable
 
-<nav class="navbar fixed-top navbar-light bg-white border-bottom box-shadow">
-    <div class="container">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="@appState.PreviousPage"><i class="fas fa-arrow-left"></i></a>
-            </li>
-        </ul>
-    </div>
+<nav class="@barStyle">
+	<div class="container">
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="@linkStyle" href="@appState.PreviousPage"><i class="fas fa-arrow-left"></i></a>
+			</li>
+		</ul>
+	</div>
 </nav>
 
 @code {
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        appState.OnChanged += StateHasChanged;
-    }
+	private string barStyle = "navbar fixed-top navbar-light bg-white border-bottom box-shadow";
+	private string linkStyle = "nav-link text-dark";
 
-    public void Dispose()
-    {
-        appState.OnChanged -= StateHasChanged;
-    }
+	protected override async void OnInitialized()
+	{
+		base.OnInitialized();
+		var appTheme = await jsRuntime.InvokeAsync<string>("window.getTheme");
+
+		barStyle = appTheme switch
+		{
+			"Dark" => "navbar fixed-top navbar-dark bg-dark border-bottom box-shadow",
+			_ => "navbar fixed-top navbar-light bg-white border-bottom box-shadow"
+		};
+
+		linkStyle = appTheme switch
+		{
+			"Dark" => "nav-link text-white",
+			_ => "nav-link text-dark"
+		};
+
+		/*
+		barStyle = appInfo.RequestedTheme switch
+		{
+			AppTheme.Dark => "navbar fixed-top navbar-dark bg-dark border-bottom box-shadow",
+			_ => "navbar fixed-top navbar-light bg-white border-bottom box-shadow"
+		};
+		*/
+
+		appState.OnChanged += StateHasChanged;
+	}
+
+	public void Dispose()
+	{
+		appState.OnChanged -= StateHasChanged;
+	}
 }

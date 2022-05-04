@@ -1,6 +1,4 @@
-﻿using BlazorApp.ViewModels;
-
-namespace BlazorApp.Views
+﻿namespace BlazorApp.Views
 {
     public partial class MauiPage : ContentPage
     {
@@ -9,6 +7,11 @@ namespace BlazorApp.Views
             InitializeComponent();
         }
 
-        public ViewModelBase ViewModel { get; set; }
+        public BaseViewModel? ViewModel { get; set; }
+
+        private void OnThemePopupTapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

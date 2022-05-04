@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0-windows10.0.19041</TargetFramework>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<!--<RuntimeIdentifier>win10-x64</RuntimeIdentifier>-->
 		<UseWindowsForms>true</UseWindowsForms>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<UseMauiEssentials>true</UseMauiEssentials>
+		<!--<UseMauiEssentials>true</UseMauiEssentials>-->
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="wwwroot\styles\app.css" />
@@ -69,10 +69,10 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.200-preview.14.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="6.0.300-rc.2.*" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1150.38" />
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre5" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1185.39" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre9" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />

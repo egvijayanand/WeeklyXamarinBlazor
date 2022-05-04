@@ -1,47 +1,43 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using WeeklyXamarin.Core.Services;
 
 namespace BlazorApp.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public partial class ViewModelBase : ObservableValidator, IViewModel
     {
-        private string _title;
+        [ObservableProperty]
+        private string title = string.Empty;
 
-        public ViewModelBase(IDataStore dataStore)
+        [ObservableProperty]
+        [AlsoNotifyChangeFor(nameof(IsNotBusy))]
+        private bool isBusy;
+
+        public ViewModelBase(IDataStore? dataStore)
         {
             DataStore = dataStore;
         }
 
-        protected IDataStore DataStore { get; private set; }
+        public IDataStore? DataStore { get; protected set; }
 
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public bool IsNotBusy => !IsBusy;
 
         public virtual Task InitializeAsync(IDictionary<string, object> parameters)
-        {
-            return Task.FromResult(0);
-        }
+            => Task.FromResult(0);
 
         protected virtual bool SetProperty<T>(ref T field,
                                               T value,
-                                              [CallerMemberName] string propertyName = "",
-                                              Action onChanging = null,
-                                              Action onChanged = null,
-                                              Func<T, T, bool> validateValue = null)
+                                              [CallerMemberName] string? propertyName = null,
+                                              Action? onChanging = null,
+                                              Action? onChanged = null,
+                                              Func<T, T, bool>? validateValue = null)
         {
-            // if value didn't change
+            // If value didn't change
             if (EqualityComparer<T>.Default.Equals(field, value))
             {
                 return false;
             }
 
-            // if value changed but didn't validate
+            // If value changed but didn't validate
             if (validateValue != null && !validateValue(field, value))
             {
                 return false;
@@ -52,11 +48,6 @@ namespace BlazorApp.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
