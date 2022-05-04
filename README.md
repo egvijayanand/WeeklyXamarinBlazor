@@ -4,7 +4,7 @@ Join me on [**Developer Thoughts**](https://egvijayanand.in/), an exclusive blog
 
 Weekly Xamarin implemented with `BlazorWebView` component
 
-* .NET MAUI targeting Android, iOS, macOS (via Mac Catalyst) and Windows via WinUI 3
+* .NET MAUI targeting Android, iOS, macOS (via Mac Catalyst), Tizen, and Windows (via WinUI 3)
 * Blazor Server and WebAssembly
   - WebAssembly (WASM) version of the solution is now hosted online here: [Weekly Xamarin Blazor](https://egvijayanand.github.io/WeeklyXamarinBlazor/)
 * Windows Client with classic WinForms and WPF
