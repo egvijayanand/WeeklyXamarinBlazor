@@ -1,4 +1,6 @@
-﻿namespace BlazorApp
+﻿using WeeklyXamarin.Core.Helpers;
+
+namespace BlazorApp
 {
     public partial class App : Application
     {
@@ -7,12 +9,19 @@
         public App(IServiceProvider services)
         {
             InitializeComponent();
-            Instance = this;
+            RegisterRoutes();
             Services = services;
             MainPage = new AppShell();
+            //MainPage = new AppNavPage(new MainPage());
         }
 
-        public static App Instance { get; private set; }
+        private static void RegisterRoutes()
+        {
+            Routing.RegisterRoute(Paths.Article, typeof(WebPage));
+            Routing.RegisterRoute(Paths.Web, typeof(WebPage));
+        }
+
+        public static App? Instance => Current as App;
 
         public IServiceProvider Services { get; }
     }

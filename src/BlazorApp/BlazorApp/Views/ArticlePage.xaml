@@ -7,10 +7,11 @@
     xmlns:pages="clr-namespace:BlazorApp.Views"
     Title="{Binding Article.Title}"
     local:ViewModelLocator.AutoWireViewModel="True"
-    x:DataType="local:ArticleViewModel"
-    BackgroundColor="White">
-    <WebView
-        HorizontalOptions="Fill"
-        Source="{Binding Article.Url}"
-        VerticalOptions="Fill" />
+    x:DataType="local:ArticleViewModel">
+    <Grid Style="{StaticResource ContentArea}">
+        <WebView
+            HorizontalOptions="Fill"
+            Source="{Binding Article.Url}"
+            VerticalOptions="Fill" />
+    </Grid>
 </pages:MauiPage>

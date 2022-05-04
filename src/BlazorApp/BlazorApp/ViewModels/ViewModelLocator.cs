@@ -25,26 +25,24 @@ namespace BlazorApp.ViewModels
 
         private static void OnAutoWireViewModelChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            if (bindable is not MauiPage view)
+            if (bindable is MauiPage page)
             {
-                return;
+                var viewType = page.GetType();
+                var viewName = viewType.FullName;
+                var viewAssemblyName = viewType.GetTypeInfo().Assembly.FullName;
+
+                var viewModelName = viewName?.Replace(".Views.", ".ViewModels.").Replace("Page", "ViewModel");
+                var viewModelTypeName = string.Format(CultureInfo.InvariantCulture, $"{viewModelName}, {viewAssemblyName}");
+                var viewModelType = Type.GetType(viewModelTypeName);
+
+                if (viewModelType == null)
+                {
+                    return;
+                }
+
+                page.ViewModel = AppService.GetService(viewModelType) as BaseViewModel;
+                page.BindingContext = page.ViewModel;
             }
-
-            var viewType = view.GetType();
-            var viewName = viewType.FullName;
-            var viewAssemblyName = viewType.GetTypeInfo().Assembly.FullName;
-
-            var viewModelName = viewName.Replace(".Views.", ".ViewModels.").Replace("Page", "ViewModel");
-            var viewModelTypeName = string.Format(CultureInfo.InvariantCulture, $"{viewModelName}, {viewAssemblyName}");
-            var viewModelType = Type.GetType(viewModelTypeName);
-
-            if (viewModelType == null)
-            {
-                return;
-            }
-
-            view.ViewModel = App.Instance.Services.GetService(viewModelType) as ViewModelBase;
-            view.BindingContext = view.ViewModel;
         }
     }
 }

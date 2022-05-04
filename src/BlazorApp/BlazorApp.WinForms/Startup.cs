@@ -25,7 +25,10 @@ namespace BlazorApp.WinForms
 
         private static void WireupServices(IServiceCollection services)
         {
-            services.AddBlazorWebView();
+            services.AddWindowsFormsBlazorWebView();
+#if DEBUG
+            services.AddBlazorWebViewDeveloperTools();
+#endif
             services.AddBlazoredModal();
             services.AddBlazoredLocalStorage();
             services.AddSingleton<WebForm>();

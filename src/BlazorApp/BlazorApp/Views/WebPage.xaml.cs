@@ -1,18 +1,15 @@
-﻿using BlazorApp.ViewModels;
-using WeeklyXamarin.Core.Helpers;
-
-namespace BlazorApp.Views
+﻿namespace BlazorApp.Views
 {
     public partial class WebPage : MauiPage, IQueryAttributable
     {
-        private readonly IDictionary<string, object> dict;
+        private readonly IDictionary<string, object>? dict;
 
         public WebPage()
         {
             InitializeComponent();
         }
 
-        public WebPage(Dictionary<string, object> dict) : this()
+        public WebPage(IDictionary<string, object> dict) : this()
         {
             this.dict = dict;
         }
@@ -21,28 +18,31 @@ namespace BlazorApp.Views
         {
             base.OnAppearing();
 
-            if (dict != null)
+            if (ViewModel is not null && dict is not null)
             {
-                if (dict.ContainsKey(Constants.Navigation.ParameterNames.ArticleId))
+                if (dict.ContainsKey(ArticleId))
                 {
                     await ViewModel.InitializeAsync(dict);
                 }
-                else if (dict.ContainsKey(Constants.Navigation.ParameterNames.WebLink))
+                else if (dict.ContainsKey(WebLink))
                 {
-                    ((WebViewModel)ViewModel).Url = dict[Constants.Navigation.ParameterNames.WebLink].ToString();
+                    ((WebViewModel)ViewModel).Url = dict[WebLink].ToString();
                 }
             }
         }
 
         async void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            if (query.ContainsKey(Constants.Navigation.ParameterNames.ArticleId))
+            if (ViewModel is not null)
             {
-                await ViewModel.InitializeAsync(query);
-            }
-            else if (query.ContainsKey(Constants.Navigation.ParameterNames.WebLink))
-            {
-                ((WebViewModel)ViewModel).Url = query[Constants.Navigation.ParameterNames.WebLink].ToString();
+                if (query.ContainsKey(ArticleId))
+                {
+                    await ViewModel.InitializeAsync(query);
+                }
+                else if (query.ContainsKey(WebLink))
+                {
+                    ((WebViewModel)ViewModel).Url = query[WebLink].ToString();
+                }
             }
         }
 
@@ -55,7 +55,10 @@ namespace BlazorApp.Views
         {
             if (e.Result == WebNavigationResult.Success)
             {
-                ViewModel.Title = await (sender as WebView)?.EvaluateJavaScriptAsync("document.title");
+                if (ViewModel is not null)
+                {
+                    ViewModel.Title = await (sender as WebView)?.EvaluateJavaScriptAsync("document.title");
+                }
             }
             else if (e.Result == WebNavigationResult.Failure)
             {

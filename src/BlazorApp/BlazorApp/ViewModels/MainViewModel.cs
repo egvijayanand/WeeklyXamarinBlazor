@@ -1,10 +1,8 @@
-﻿using WeeklyXamarin.Core.Services;
-
-namespace BlazorApp.ViewModels
+﻿namespace BlazorApp.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BaseViewModel
     {
-        public MainViewModel(IDataStore dataStore) : base(dataStore)
+        public MainViewModel()
         {
             Title = "Weekly Xamarin";
         }

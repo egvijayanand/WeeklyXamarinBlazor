@@ -2,6 +2,7 @@ using BlazorApp.Wasm.Services;
 using Blazored.LocalStorage;
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.JSInterop;
 using VijayAnand.MauiToolkit.Core.Services;
 using WeeklyXamarin.Core;
 using WeeklyXamarin.Core.Helpers;
@@ -18,6 +19,9 @@ namespace BlazorApp.Wasm
 
             host.Services.AddBlazoredModal();
             host.Services.AddBlazoredLocalStorage();
+
+            //host.Services.AddSingleton(sp => (IJSInProcessRuntime)sp.GetRequiredService<IJSRuntime>());
+            //host.Services.AddSingleton(sp => (IJSUnmarshalledRuntime)sp.GetRequiredService<IJSRuntime>());
 
             host.Services.AddScoped<AppState>();
             host.Services.AddScoped<IDataStore, GitHubDataStore>();

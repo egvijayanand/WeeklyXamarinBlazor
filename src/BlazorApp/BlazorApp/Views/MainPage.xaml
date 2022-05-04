@@ -4,15 +4,29 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:b="clr-namespace:Microsoft.AspNetCore.Components.WebView.Maui;assembly=Microsoft.AspNetCore.Components.WebView.Maui"
+    xmlns:fas="clr-namespace:FontAwesome.Solid;assembly=VijayAnand.FontAwesome"
     xmlns:local="clr-namespace:BlazorApp.ViewModels"
     xmlns:pages="clr-namespace:BlazorApp.Views"
     xmlns:shared="clr-namespace:WeeklyXamarin.Core;assembly=WeeklyXamarin.Core"
     Title="{Binding Title}"
     local:ViewModelLocator.AutoWireViewModel="True"
     x:DataType="local:MainViewModel">
-    <b:BlazorWebView HostPage="wwwroot/index.html">
-        <b:BlazorWebView.RootComponents>
-            <b:RootComponent ComponentType="{x:Type shared:Main}" Selector="#app" />
-        </b:BlazorWebView.RootComponents>
-    </b:BlazorWebView>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem
+            Clicked="OnThemePopupTapped"
+            IconImageSource="{FontImage Glyph={x:Static fas:IconFont.Gear},
+                                        FontFamily=FAS,
+                                        Color={OnPlatform WinUI={StaticResource TextLight},
+                                                          Default={StaticResource PrimaryTextColor}}}"
+            Order="Primary"
+            Priority="0"
+            Text="Theme" />
+    </ContentPage.ToolbarItems>-->
+    <Grid Style="{StaticResource ContentArea}">
+        <b:BlazorWebView HostPage="wwwroot/index.html">
+            <b:BlazorWebView.RootComponents>
+                <b:RootComponent ComponentType="{x:Type shared:Main}" Selector="#app" />
+            </b:BlazorWebView.RootComponents>
+        </b:BlazorWebView>
+    </Grid>
 </pages:MauiPage>

@@ -2,22 +2,77 @@
     x:Class="BlazorApp.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BlazorApp">
+    xmlns:fas="clr-namespace:FontAwesome.Solid;assembly=VijayAnand.FontAwesome"
+    xmlns:local="clr-namespace:BlazorApp"
+    xmlns:m="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+    xmlns:views="clr-namespace:BlazorApp.Views">
+    <!--<Application.MainPage>
+        <local:AppNavPage>
+            <x:Arguments>
+                <views:MainPage />
+            </x:Arguments>
+        </local:AppNavPage>
+    </Application.MainPage>-->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="PageBackgroundColor">#512BDF</Color>
+            <x:Double x:Key="ItemSpacing">10</x:Double>
+            <x:Double x:Key="MobileFontSize">14</x:Double>
+            <x:Double x:Key="DesktopFontSize">16</x:Double>
+
+            <x:String x:Key="AppFont">OSR</x:String>
+
+            <m:Thickness x:Key="TitlePadding">10,5,30,0</m:Thickness>
+
+            <Color x:Key="MauiColor">#512BDF</Color>
+
+            <Color x:Key="PrimaryColor">#3700B3</Color>
             <Color x:Key="PrimaryTextColor">White</Color>
 
+            <Color x:Key="BackgroundDark">#121212</Color>
+            <Color x:Key="BackgroundLight">White</Color>
+
+            <Color x:Key="TextDark">White</Color>
+            <Color x:Key="TextLight">Black</Color>
+
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
-                <Setter Property="FontFamily" Value="OSR" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" />
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+                <Setter Property="FontSize" Value="{OnIdiom Phone=14, Desktop=18}" />
+            </Style>
+
+            <Style x:Key="MauiLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource MauiColor}}" />
+            </Style>
+
+            <Style ApplyToDerivedTypes="True" TargetType="StackBase">
+                <Setter Property="Spacing" Value="{StaticResource ItemSpacing}" />
+            </Style>
+
+            <Style x:Key="ContentArea" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}" />
             </Style>
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
-                <Setter Property="FontFamily" Value="OSR" />
-                <Setter Property="BackgroundColor" Value="#2b0b98" />
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+                <Setter Property="FontSize" Value="{OnIdiom Phone={StaticResource MobileFontSize}, Desktop={StaticResource DesktopFontSize}}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="Padding" Value="14,10" />
             </Style>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource BackgroundDark}, Light={StaticResource BackgroundLight}}" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextDark}, Light={StaticResource TextLight}}" />
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+                <Setter Property="FontSize" Value="{OnIdiom Phone={StaticResource MobileFontSize}, Desktop={StaticResource DesktopFontSize}}" />
+            </Style>
+
+            <Style ApplyToDerivedTypes="True" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BarTextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="IconColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+
             <Style
                 x:Key="TitleCentered"
                 BaseResourceKey="TitleStyle"

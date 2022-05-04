@@ -9,10 +9,12 @@
     local:ViewModelLocator.AutoWireViewModel="True"
     x:DataType="local:WebViewModel"
     BackgroundColor="White">
-    <WebView
-        HorizontalOptions="Fill"
-        Navigated="WebView_Navigated"
-        Navigating="WebView_Navigating"
-        Source="{Binding Url}"
-        VerticalOptions="Fill" />
+    <Grid Style="{StaticResource ContentArea}">
+        <WebView
+            HorizontalOptions="Fill"
+            Navigated="WebView_Navigated"
+            Navigating="WebView_Navigating"
+            Source="{Binding Url}"
+            VerticalOptions="Fill" />
+    </Grid>
 </pages:MauiPage>

@@ -6,7 +6,7 @@
     }
 };
 
-window.webShareSupported = () => false; //!!navigator.share;
+window.webShareSupported = () => !!navigator.share;
 
 window.shareArticle = async (text, url) => {
     const shareData = {
@@ -66,3 +66,14 @@ window.readNetworkState = (razorPage) => {
 };
 
 //window.readNetworkState = () => window.navigator.onLine;
+
+window.getTheme = () => {
+    const darkTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    if (darkTheme.matches) {
+        console.log("Dark theme.");
+        return "Dark";
+    } else {
+        console.log("Light theme.");
+        return "Light";
+    }
+}

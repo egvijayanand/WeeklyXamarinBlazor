@@ -1,10 +1,15 @@
 ﻿using CommunityToolkit.Maui.Views;
 
-namespace BlazorApp.Views
+namespace BlazorApp
 {
-    public partial class MainPage : MauiPage
+    public partial class AppNavPage : NavigationPage
     {
-        public MainPage()
+        public AppNavPage()
+        {
+            InitializeComponent();
+        }
+
+        public AppNavPage(Page startPage) : base(startPage)
         {
             InitializeComponent();
         }
@@ -15,7 +20,7 @@ namespace BlazorApp.Views
 
             if (appTheme is not null)
             {
-                this.ShowPopup(appTheme);
+                Application.Current?.MainPage?.ShowPopup(appTheme);
             }
         }
     }

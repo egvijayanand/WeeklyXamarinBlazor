@@ -1,33 +1,31 @@
-﻿using WeeklyXamarin.Core.Helpers;
-using WeeklyXamarin.Core.Models;
+﻿using WeeklyXamarin.Core.Models;
 using WeeklyXamarin.Core.Services;
 
 namespace BlazorApp.ViewModels
 {
-    public class WebViewModel : ViewModelBase
+    public partial class WebViewModel : DataViewModel
     {
-        private string url;
+        [ObservableProperty]
+        private string url = string.Empty;
 
         public WebViewModel(IDataStore dataStore) : base(dataStore)
         {
-            Title = "Please wait ...";
+            Title = "Loading ...";
         }
 
-        public string Url
-        {
-            get => url;
-            set => SetProperty(ref url, value);
-        }
-
-        public override async Task InitializeAsync(IDictionary<string, object> parameters)
+        public override async Task InitializeAsync(IDictionary<string, object>? parameters)
         {
             await base.InitializeAsync(parameters);
+
             DataStore.UpdateNetworkStatus(Connectivity.NetworkAccess == NetworkAccess.Internet);
-            var articleId = parameters[Constants.Navigation.ParameterNames.ArticleId].ToString();
-            var article = await DataStore.GetArticleAsync(Article.GetEditionId(articleId), articleId, true, false);
-            Url = $"{article.Url}?utm_source=app&utm_medium=windows&utm_content={parameters[Constants.Analytics.ParameterNames.Content]}";
-            Title = article.Title;
-            System.Diagnostics.Debug.WriteLine(Title);
+
+            if (parameters is not null && parameters.ContainsKey(ArticleId))
+            {
+                var articleId = parameters[ArticleId].ToString();
+                var article = await DataStore.GetArticleAsync(Article.GetEditionId(articleId), articleId, true, false);
+                Url = article.Url;
+                Title = article.Title;
+            }
         }
     }
 }
