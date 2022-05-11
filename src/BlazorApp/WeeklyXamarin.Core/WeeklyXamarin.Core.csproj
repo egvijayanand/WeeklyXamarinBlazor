@@ -21,11 +21,11 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre9" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.0-pre11" />
 	</ItemGroup>
 
 	<ItemGroup>

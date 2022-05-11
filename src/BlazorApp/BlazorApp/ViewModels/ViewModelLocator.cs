@@ -1,5 +1,4 @@
-﻿using BlazorApp.Views;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 
 namespace BlazorApp.ViewModels
