@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BlazorApp.Wasm.dll": "sha256-MRLuU60I+Z0kuyFA0e\/ZV0\/TzADbE64wNrAg5tN7zlA=",
+      "BlazorApp.Wasm.dll": "sha256-plOF9k6wMXW1VE\/0lKJYFrWaNCdDz\/PvuiDDD2zij8M=",
       "Blazored.LocalStorage.dll": "sha256-6RRoYeDP3d0xabXmcCMF66wXeJlXVPem28Trs8sQiis=",
       "Blazored.Modal.dll": "sha256-yoXX75RsqCVb+q2v0ZS7Hd6lW+OeSPHHPyJBk\/AyYMg=",
       "Microsoft.AspNetCore.Components.dll": "sha256-A5wsxDNrG3jkONMCIA38tPccPtNaD8WacCeKmVRuwfQ=",
@@ -65,8 +65,8 @@
       "System.Text.Json.dll": "sha256-r430P4Rvf8rCSNUhLMyyiGnLGyGHJ9v5KhZMsSwxk6I=",
       "System.Text.RegularExpressions.dll": "sha256-vYnr8C68EF2g4+18+oj5SDyWWMlFw9KBGLz5KSceMkg=",
       "System.Threading.dll": "sha256-HbOsHf6ldbphotCpqZpAPHh8fwhhYPEpR1rr+LzbaPg=",
-      "VijayAnand.MauiToolkit.Core.dll": "sha256-w2XdPwVf6md1aZSQSTqT6jwcqT4gGgU3ieVPW6O7lVs=",
-      "WeeklyXamarin.Core.dll": "sha256-9vplptadk5OGjYw1xPMBN8pM\/61qMvAl1MJVrBgg7dE="
+      "VijayAnand.MauiToolkit.Core.dll": "sha256-yp2fT683PZr3GzDZ4PvZqIBCWqKG1m9PI1Fq8YihTEI=",
+      "WeeklyXamarin.Core.dll": "sha256-gR\/gyDy7XZJkGy\/9ncg0UN8oqvBDFUotmYwIL\/PYwtU="
     },
     "extensions": null,
     "lazyAssembly": null,
@@ -75,7 +75,7 @@
     "runtime": {
       "dotnet.6.0.5.3whcy4itad.js": "sha256-L6kG0+NxO7NOWDzqsh\/VWnVdSPwDwNPlsxgV5SLYwuM=",
       "dotnet.timezones.blat": "sha256-vRU6+wGzQ3FJ0JtyPJtipblPe9MvJf+qKY20xZhuyKQ=",
-      "dotnet.wasm": "sha256-oq9XdWtEhsqEerJy6TukwVN+TitSrpSHNtBh8Im2Rzg=",
+      "dotnet.wasm": "sha256-q79psZ1h2V0eSSd3apGbmufMDi0IBAIIVMINh3+mYKI=",
       "icudt_CJK.dat": "sha256-WPyI4hWDPnOw62Nr27FkzGjdbucZnQD+Ph+GOPhAedw=",
       "icudt_EFIGS.dat": "sha256-4RwaPx87Z4dvn77ie\/ro3\/QzyS+\/gGmO3Y\/0CSAXw4k=",
       "icudt_no_CJK.dat": "sha256-OxylFgLJlFqixsj+nLxYVsv5iZLvfIKMpLf9hrWaChA=",

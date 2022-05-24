@@ -681,11 +681,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-9KmPItibY4IDXqAHYh6qT4hpqeZhqW0fOzkwOSbcjTU=",
+      "hash": "sha256-dkrM4lBVTF8gvBRM7ZPjK\/QvUNmkKWVTgivSfezKHf8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-MRLuU60I+Z0kuyFA0e\/ZV0\/TzADbE64wNrAg5tN7zlA=",
+      "hash": "sha256-plOF9k6wMXW1VE\/0lKJYFrWaNCdDz\/PvuiDDD2zij8M=",
       "url": "_framework\/BlazorApp.Wasm.dll"
     },
     {
@@ -917,11 +917,11 @@
       "url": "_framework\/System.Threading.dll"
     },
     {
-      "hash": "sha256-w2XdPwVf6md1aZSQSTqT6jwcqT4gGgU3ieVPW6O7lVs=",
+      "hash": "sha256-yp2fT683PZr3GzDZ4PvZqIBCWqKG1m9PI1Fq8YihTEI=",
       "url": "_framework\/VijayAnand.MauiToolkit.Core.dll"
     },
     {
-      "hash": "sha256-9vplptadk5OGjYw1xPMBN8pM\/61qMvAl1MJVrBgg7dE=",
+      "hash": "sha256-gR\/gyDy7XZJkGy\/9ncg0UN8oqvBDFUotmYwIL\/PYwtU=",
       "url": "_framework\/WeeklyXamarin.Core.dll"
     },
     {
@@ -929,7 +929,7 @@
       "url": "_framework\/dotnet.6.0.5.3whcy4itad.js"
     },
     {
-      "hash": "sha256-oq9XdWtEhsqEerJy6TukwVN+TitSrpSHNtBh8Im2Rzg=",
+      "hash": "sha256-q79psZ1h2V0eSSd3apGbmufMDi0IBAIIVMINh3+mYKI=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -941,5 +941,5 @@
       "url": "_content\/Blazored.Modal\/blazored.modal.js"
     }
   ],
-  "version": "Yuv1qjPK"
+  "version": "Yd2SrVyH"
 };
