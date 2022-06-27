@@ -40,7 +40,8 @@
 		if (connected)
 		{
 			appState.SetPreviousPage("bookmarks");
-			await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "bookmark"));
+			//await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "bookmark"));
+			await navigationService.GoToAsync(Paths.Article, ParameterNames.ArticleId, articleId);
 		}
 		else
 		{

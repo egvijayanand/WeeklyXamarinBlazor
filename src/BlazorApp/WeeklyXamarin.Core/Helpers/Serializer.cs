@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 
 namespace WeeklyXamarin.Core.Helpers
 {
@@ -6,12 +6,12 @@ namespace WeeklyXamarin.Core.Helpers
     {
         public static string ToJson<T>(T obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            return JsonSerializer.Serialize(obj);
         }
 
         public static T ToObject<T>(string json)
         {
-            return JsonConvert.DeserializeObject<T>(json);
+            return JsonSerializer.Deserialize<T>(json);
         }
     }
 }

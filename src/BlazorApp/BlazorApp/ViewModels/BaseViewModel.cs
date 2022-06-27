@@ -6,7 +6,7 @@ namespace BlazorApp.ViewModels
     public abstract partial class BaseViewModel : ObservableValidator
     {
         [ObservableProperty]
-        [AlsoNotifyChangeFor(nameof(IsNotBusy))]
+        [NotifyPropertyChangedFor(nameof(IsNotBusy))]
         private bool isBusy;
 
         [ObservableProperty]

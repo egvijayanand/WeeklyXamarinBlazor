@@ -246,7 +246,8 @@
 		if (connected)
 		{
 			appState.SetPreviousPage($"search?q={SearchTerm}{(searchByCategory ? "&type=category" : string.Empty)}");
-			await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "search"));
+			//await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "search"));
+			await navigationService.GoToAsync(Paths.Article, ParameterNames.ArticleId, articleId);
 		}
 		else
 		{
