@@ -9,7 +9,7 @@ namespace BlazorApp.ViewModels
         private string title = string.Empty;
 
         [ObservableProperty]
-        [AlsoNotifyChangeFor(nameof(IsNotBusy))]
+        [NotifyPropertyChangedFor(nameof(IsNotBusy))]
         private bool isBusy;
 
         public ViewModelBase(IDataStore? dataStore)

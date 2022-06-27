@@ -89,7 +89,8 @@
 
 		if (connected)
 		{
-			await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "edition"));
+			//await navigationService.GoToAsync(Paths.Article, UriHelper.QueryParameters(articleId, "edition"));
+			await navigationService.GoToAsync(Paths.Article, ParameterNames.ArticleId, articleId);
 		}
 		else
 		{
