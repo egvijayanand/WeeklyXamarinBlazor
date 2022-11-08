@@ -2,7 +2,7 @@
 
 Join me on [**Developer Thoughts**](https://egvijayanand.in/), an exclusive blog for .NET MAUI and Blazor, for articles on working with them.
 
-[![Publish Weekly Xamarin Blazor](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml/badge.svg)](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml)
+[![Publish Weekly Xamarin Blazor](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml/badge.svg)](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml "Status of publishing WASM version to GitHub Pages")
 
 Weekly Xamarin implemented with `BlazorWebView` component
 
