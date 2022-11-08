@@ -2,6 +2,8 @@
 
 Join me on [**Developer Thoughts**](https://egvijayanand.in/), an exclusive blog for .NET MAUI and Blazor, for articles on working with them.
 
+[![Publish Weekly Xamarin Blazor](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml/badge.svg)](https://github.com/egvijayanand/WeeklyXamarinBlazor/actions/workflows/publish.yml)
+
 Weekly Xamarin implemented with `BlazorWebView` component
 
 * .NET MAUI targeting Android, iOS, macOS (via Mac Catalyst), Tizen, and Windows (via WinUI 3)
