@@ -72,7 +72,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.49" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1370.28" />
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="1.0.2-pre3" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />
