@@ -9,9 +9,9 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.49" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.52" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.0" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />
