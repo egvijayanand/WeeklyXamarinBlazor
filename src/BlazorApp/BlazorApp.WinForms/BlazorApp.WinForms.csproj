@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net7.0-windows7.0</TargetFramework>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
 		<!--<RuntimeIdentifier>win10-x64</RuntimeIdentifier>-->
 		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>BlazorApp.WinForms</AssemblyName>
+		<RootNamespace>BlazorApp.WinForms</RootNamespace>
 		<!--<UseMauiEssentials>true</UseMauiEssentials>-->
 	</PropertyGroup>
 	<ItemGroup>
@@ -69,9 +72,11 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.52" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1370.28" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.0-preview.1.7762" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.1.23110.8" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1587.40" />
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1370.28" />-->
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1343.22" />-->
 		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.1" />
 	</ItemGroup>
 	<ItemGroup>

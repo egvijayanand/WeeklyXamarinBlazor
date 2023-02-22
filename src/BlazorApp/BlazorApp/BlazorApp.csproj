@@ -2,15 +2,16 @@
 
 	<PropertyGroup>
 		<!-- Android, iOS, MacCatalyst -->
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
-		<!--<TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks>-->
-		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>$(TargetFrameworks);net8.0</TargetFrameworks>
+		<!--<TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks>-->
+		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
 
 		<!-- .NET MAUI -->
 		<UseMaui>true</UseMaui>
-		<MauiVersion>7.0.52</MauiVersion>
 		<SingleProject>true</SingleProject>
+		<WindowsPackageType>None</WindowsPackageType>
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
 
 		<!-- Project Options -->
@@ -61,11 +62,11 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
-		<PackageReference Include="PInvoke.User32" Version="0.7.104" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.0-preview.1.23112.2" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.1.23110.8" />
+		<PackageReference Include="PInvoke.User32" Version="0.7.124" />
 		<PackageReference Include="VijayAnand.FontAwesome" Version="2.1.1" />
 		<PackageReference Include="VijayAnand.MauiToolkit" Version="2.0.1" />
 	</ItemGroup>
