@@ -62,10 +62,10 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.0-preview.1.23112.2" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.1.23110.8" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.0-preview.2.*" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-preview.2.*" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.124" />
 		<PackageReference Include="VijayAnand.FontAwesome" Version="2.1.1" />
 		<PackageReference Include="VijayAnand.MauiToolkit" Version="2.0.1" />
