@@ -21,7 +21,7 @@ on:
 
 # Allows you to run this workflow manually from the Actions tab
 env:
-  DOTNET_VERSION: '8.0.100-preview.2.23157.25'
+  DOTNET_VERSION: '8.0.100-preview.3.23178.7'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
