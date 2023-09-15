@@ -72,9 +72,11 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.0-preview.3.*" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.3.*" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1661.34" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1938.49" />
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1722.45" />-->
+		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1661.34" />-->
 		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1370.28" />-->
 		<!--<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1343.22" />-->
 		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.1" />

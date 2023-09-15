@@ -10,8 +10,8 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="8.0.0-preview.3.*" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.3.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-rc.1.*" />
 		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.1" />
 	</ItemGroup>
 	<ItemGroup>

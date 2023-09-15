@@ -18,12 +18,12 @@ namespace BlazorApp.Wpf
         {
             var host = Host.CreateDefaultBuilder()
                            .ConfigureEssentials()
-                           .ConfigureServices((c, x) => WireupServices(c, x))
+                           .ConfigureServices(WireupServices)
                            .Build();
             Services = host.Services;
         }
 
-        private static void WireupServices(HostBuilderContext context, IServiceCollection services)
+        private static void WireupServices(IServiceCollection services)
         {
             services.AddWpfBlazorWebView();
 #if DEBUG
