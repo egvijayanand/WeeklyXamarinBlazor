@@ -18,7 +18,7 @@ namespace BlazorApp.WinForms
         {
             var host = Host.CreateDefaultBuilder()
                            .ConfigureEssentials()
-                           .ConfigureServices((_, x) => WireupServices(x))
+                           .ConfigureServices(WireupServices)
                            .Build();
             Services = host.Services;
         }
@@ -31,12 +31,15 @@ namespace BlazorApp.WinForms
 #endif
             services.AddBlazoredModal();
             services.AddBlazoredLocalStorage();
+
             services.AddSingleton<WebForm>();
             services.AddSingleton<AppState>();
-            services.AddScoped<IDataStore, GitHubDataStore>();
             services.AddSingleton<IDialogService, DialogService>();
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<IShareService, ShareService>();
+
+            services.AddScoped<IDataStore, GitHubDataStore>();
+
             services.AddHttpClient(Constants.DataStore.GitHub, client =>
             {
                 client.BaseAddress = new Uri("https://raw.githubusercontent.com/weeklyxamarin/WeeklyXamarin.content/master/content/");

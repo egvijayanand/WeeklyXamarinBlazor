@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+		<WasmEnableWebcil>true</WasmEnableWebcil>
 		<!-- <RunAOTCompilation>true</RunAOTCompilation> -->
 		<!-- <EmccTotalMemory>16777216</EmccTotalMemory> -->
 	</PropertyGroup>
@@ -12,8 +13,8 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-preview.3.*" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-preview.3.*" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0-rc.1.*" PrivateAssets="all" />
 		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="2.0.1" />
 	</ItemGroup>
 
