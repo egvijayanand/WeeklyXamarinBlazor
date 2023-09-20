@@ -73,7 +73,7 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-rc.1.*" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.124" />
 		<PackageReference Include="VijayAnand.FontAwesome" Version="2.3.0" />
-		<PackageReference Include="VijayAnand.MauiToolkit" Version="2.0.1" />
+		<PackageReference Include="VijayAnand.MauiToolkit" Version="3.0.0-rc.1" />
 	</ItemGroup>
 
 	<!--<PropertyGroup>
