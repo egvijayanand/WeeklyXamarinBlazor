@@ -23,11 +23,11 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0-*" />
 		<PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-rc.1.*" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-*" />
 		<!--<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />-->
-		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="3.0.0-rc.1" />
+		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="3.0.0-*" />
 	</ItemGroup>
 
 	<ItemGroup>
