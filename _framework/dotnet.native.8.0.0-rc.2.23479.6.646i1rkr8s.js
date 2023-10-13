@@ -5944,7 +5944,7 @@ var tempI64;
   });
   FS.FSNode = FSNode;
   FS.staticInit();Module["FS_createPath"] = FS.createPath;Module["FS_createDataFile"] = FS.createDataFile;Module["FS_createPath"] = FS.createPath;Module["FS_createDataFile"] = FS.createDataFile;Module["FS_createPreloadedFile"] = FS.createPreloadedFile;Module["FS_unlink"] = FS.unlink;Module["FS_createLazyFile"] = FS.createLazyFile;Module["FS_createDevice"] = FS.createDevice;;
-DOTNET.setup({ linkerDisableLegacyJsInterop: false,linkerWasmEnableSIMD: true,linkerWasmEnableEH: true,linkerEnableAotProfiler: false, linkerEnableBrowserProfiler: false, gitHash: "92959931a32a37a19d8e1b1684edc6db0857d7de", });;
+DOTNET.setup({ linkerDisableLegacyJsInterop: false,linkerWasmEnableSIMD: true,linkerWasmEnableEH: true,linkerEnableAotProfiler: false, linkerEnableBrowserProfiler: false, gitHash: "0b25e38ad32a69cd83ae246104b32449203cc71c", });;
 // include: base64Utils.js
 // Copied from https://github.com/strophe/strophejs/blob/e06d027/src/polyfills.js#L149
 
