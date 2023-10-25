@@ -31,7 +31,10 @@ namespace BlazorApp.Wasm
 
             host.Services.AddHttpClient(Constants.DataStore.GitHub, client =>
             {
-                client.BaseAddress = new Uri("https://raw.githubusercontent.com/weeklyxamarin/WeeklyXamarin.content/master/content/");
+                // GitHub Raw URLs not working
+                //client.BaseAddress = new Uri("https://raw.githubusercontent.com/weeklyxamarin/WeeklyXamarin.content/master/content/");
+                // Since everything is JSON file content, making use of the direct URLs
+                client.BaseAddress = new Uri("https://github.com/weeklyxamarin/WeeklyXamarin.content/blob/master/content/");
             });
 
             await host.Build().RunAsync();
