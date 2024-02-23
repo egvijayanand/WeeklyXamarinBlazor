@@ -52,4 +52,4 @@ async function onFetch(event) {
 async function onPush(event) {
 	self.registration.showNotification("Notification Title", { body: "Notification Body" });
 }
-/* Manifest version: rinx7dni */
+/* Manifest version: YnMJb9aW */
