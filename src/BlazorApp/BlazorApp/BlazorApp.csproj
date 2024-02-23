@@ -2,11 +2,12 @@
 
 	<PropertyGroup>
 		<!-- Android, iOS, MacCatalyst -->
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);net8.0</TargetFrameworks>
-		<!--<TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks>-->
-		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
+		<TargetFrameworks>net9.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('osx'))">$(TargetFrameworks);net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-ios;net9.0-maccatalyst;net9.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
+		<TargetFrameworks>$(TargetFrameworks);net9.0</TargetFrameworks>
+		<OutputType Condition="'$(TargetFramework)' != 'net9.0'">Exe</OutputType>
 
 		<!-- .NET MAUI -->
 		<UseMaui>true</UseMaui>
@@ -34,7 +35,7 @@
 		<!-- Target Platform Options -->
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 
@@ -67,10 +68,10 @@
 
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="6.*" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.*" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.*" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.*-*" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.*-*" />
 		<PackageReference Include="PInvoke.User32" Version="0.7.124" />
 		<PackageReference Include="VijayAnand.FontAwesome" Version="2.*" />
 		<PackageReference Include="VijayAnand.MauiToolkit" Version="3.*" />
