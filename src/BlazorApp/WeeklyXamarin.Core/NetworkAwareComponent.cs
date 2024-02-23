@@ -26,10 +26,10 @@ namespace WeeklyXamarin.Core
 
         protected virtual bool SetProperty<T>(ref T field,
                                                   T value,
-                                                  [CallerMemberName] string propertyName = null,
-                                                  Action onChanging = null,
-                                                  Action onChanged = null,
-                                                  Func<T, T, bool> validateValue = null)
+                                                  [CallerMemberName] string? propertyName = null,
+                                                  Action? onChanging = null,
+                                                  Action? onChanged = null,
+                                                  Func<T, T, bool>? validateValue = null)
         {
             // if value didn't change
             if (EqualityComparer<T>.Default.Equals(field, value))
@@ -50,14 +50,14 @@ namespace WeeklyXamarin.Core
             return true;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public async ValueTask DisposeAsync()
         {
-            await JSRuntime.InvokeVoidAsync("removeFrom");
+            //await JSRuntime.InvokeVoidAsync("removeFrom");
             _objRef?.Dispose();
         }
 
