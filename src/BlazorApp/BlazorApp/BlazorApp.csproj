@@ -68,7 +68,7 @@
 
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="7.*" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="8.*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.*-*" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="9.*-*" />
@@ -85,37 +85,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\WeeklyXamarin.Core\WeeklyXamarin.Core.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<MauiXaml Update="AppNavPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="AppShell.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\AppThemePopup.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\ArticlePage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\MainPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\MauiPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Views\WebPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Update="Views\ArticlePage.xaml.cs">
-			<DependentUpon>ArticlePage.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\MauiPage.xaml.cs">
-			<DependentUpon>MauiPage.xaml</DependentUpon>
-		</Compile>
 	</ItemGroup>
 
 </Project>
