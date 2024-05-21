@@ -1,3 +1,4 @@
+/* Manifest version: /4CAhgR+ */
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
@@ -52,4 +53,3 @@ async function onFetch(event) {
 async function onPush(event) {
 	self.registration.showNotification("Notification Title", { body: "Notification Body" });
 }
-/* Manifest version: rSHa+edI */
