@@ -68,7 +68,7 @@
 
 		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="8.*" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.*" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.*-*" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="9.*-*" />
