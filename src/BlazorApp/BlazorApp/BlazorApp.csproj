@@ -26,7 +26,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.blazorapp</ApplicationId>
-		<ApplicationIdGuid>259912f4-609d-4d0a-a1dd-cb66a5b897de</ApplicationIdGuid>
+		<!-- <ApplicationIdGuid>259912f4-609d-4d0a-a1dd-cb66a5b897de</ApplicationIdGuid> -->
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
