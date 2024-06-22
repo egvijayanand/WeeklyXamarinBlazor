@@ -74,7 +74,7 @@
 		<PackageReference Include="Blazored.Modal" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="9.*-*" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.*-*" />
-		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.*" />
 		<PackageReference Include="VijayAnand.MauiToolkit.Core" Version="3.*" />
 	</ItemGroup>
 	<ItemGroup>
