@@ -11,9 +11,12 @@ namespace BlazorApp
             InitializeComponent();
             RegisterRoutes();
             Services = services;
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
             //MainPage = new AppNavPage(new MainPage());
         }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+            => new(new AppShell());
 
         private static void RegisterRoutes()
         {
