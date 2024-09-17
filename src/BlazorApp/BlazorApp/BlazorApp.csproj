@@ -14,6 +14,7 @@
 		<SingleProject>true</SingleProject>
 		<WindowsPackageType>None</WindowsPackageType>
 		<EnableDefaultCssItems>false</EnableDefaultCssItems>
+		<WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
 
 		<!-- Project Options -->
 		<Nullable>enable</Nullable>
